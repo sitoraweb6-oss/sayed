@@ -1,0 +1,129 @@
+import { useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { ArrowLeft, ArrowUpRight } from 'lucide-react';
+import { mockProjects } from '../data/mockData';
+
+export default function CaseStudy() {
+  const { slug } = useParams<{ slug: string }>();
+  
+  // Find project by slug
+  const project = mockProjects.find(p => p.slug === slug);
+
+  if (!project) {
+    return (
+      <div className="pt-32 px-6 max-w-7xl mx-auto min-h-[60vh] flex flex-col items-center justify-center text-center">
+        <h1 className="text-3xl font-medium text-stone-900 mb-4">Project Not Found</h1>
+        <p className="text-stone-600 mb-8">The project you are looking for does not exist or has been removed.</p>
+        <Link to="/work" className="inline-flex items-center text-stone-900 font-medium hover:text-stone-600">
+          <ArrowLeft className="w-4 h-4 mr-2" /> Back to Work
+        </Link>
+      </div>
+    );
+  }
+
+  // Placeholder case study details if missing
+  const challenge = "The client needed a modern, high-performance digital presence that could effectively communicate their value proposition and support their primary business goals.";
+  const solution = "I designed and developed a custom solution focused on clean architecture, optimized performance, and a user-centric interface that directly addresses the core business requirements.";
+  const objective = "To create a scalable, reliable, and professional digital experience.";
+  const value = "Improved clarity, better user experience, and a stronger digital presentation that supports future growth.";
+
+  return (
+    <>
+      <Helmet>
+        <title>{project.title} | Sayed Ahmad</title>
+        <meta name="description" content={project.short_description} />
+      </Helmet>
+
+      <article className="pt-24 pb-24 bg-stone-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          
+          <Link to="/work" className="inline-flex items-center text-sm font-medium text-stone-500 hover:text-stone-900 transition-colors mb-12">
+            <ArrowLeft className="w-4 h-4 mr-2" /> Back to all projects
+          </Link>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-16">
+            <div className="lg:col-span-7">
+              <h1 className="text-4xl md:text-5xl font-medium tracking-tight text-stone-900 mb-6">{project.title}</h1>
+              <p className="text-xl text-stone-600 leading-relaxed">{project.short_description}</p>
+            </div>
+            
+            <div className="lg:col-span-5 flex flex-col gap-6 pt-4 lg:pt-0 border-t lg:border-t-0 border-stone-200">
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <h3 className="text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2">Category</h3>
+                  <p className="text-stone-900 font-medium">{project.category}</p>
+                </div>
+                {project.client_type && (
+                  <div>
+                    <h3 className="text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2">Business Type</h3>
+                    <p className="text-stone-900 font-medium">{project.client_type}</p>
+                  </div>
+                )}
+                {project.my_role && (
+                  <div>
+                    <h3 className="text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2">My Role</h3>
+                    <p className="text-stone-900 font-medium">{project.my_role}</p>
+                  </div>
+                )}
+                <div>
+                  <h3 className="text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2">Technologies</h3>
+                  <p className="text-stone-900 font-medium">{project.technologies.join(', ')}</p>
+                </div>
+              </div>
+              
+              {project.live_url && project.live_url !== '#' && (
+                <div className="mt-4">
+                  <a 
+                    href={project.live_url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-sm font-medium text-stone-900 border-b border-stone-900 pb-1 hover:text-stone-600 hover:border-stone-600 transition-colors"
+                  >
+                    View Live Website <ArrowUpRight className="w-4 h-4 ml-1" />
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+          
+          {/* Hero Image */}
+          <div className="w-full aspect-[16/9] md:aspect-[2/1] bg-stone-200 rounded-3xl overflow-hidden mb-24">
+            <img 
+              src={project.thumbnail_image} 
+              alt={`${project.title} Preview`} 
+              className="w-full h-full object-cover"
+            />
+          </div>
+          
+          {/* Case Study Details */}
+          <div className="max-w-3xl mx-auto">
+            <div className="space-y-20">
+              
+              <section>
+                <h2 className="text-2xl font-medium text-stone-900 mb-6">The Challenge</h2>
+                <p className="text-lg text-stone-600 leading-relaxed">{challenge}</p>
+              </section>
+              
+              <section>
+                <h2 className="text-2xl font-medium text-stone-900 mb-6">Project Objective</h2>
+                <p className="text-lg text-stone-600 leading-relaxed">{objective}</p>
+              </section>
+              
+              <section>
+                <h2 className="text-2xl font-medium text-stone-900 mb-6">The Solution</h2>
+                <p className="text-lg text-stone-600 leading-relaxed">{solution}</p>
+              </section>
+              
+              <section className="bg-white p-10 rounded-2xl border border-stone-200">
+                <h2 className="text-xl font-medium text-stone-900 mb-4">Business Value Delivered</h2>
+                <p className="text-stone-700 leading-relaxed">{value}</p>
+              </section>
+              
+            </div>
+          </div>
+          
+        </div>
+      </article>
+    </>
+  );
+}
