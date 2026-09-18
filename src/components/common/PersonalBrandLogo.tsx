@@ -48,15 +48,13 @@ export default function PersonalBrandLogo({
   alt = PERSONAL_BRAND.altText,
 }: PersonalBrandLogoProps) {
   const [hasError, setHasError] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-
   const resolvedSrc = resolveAssetUrl(imageSrc);
 
   // Variant size & style presets
   const variantStyles = {
-    navbar: 'w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 ring-1 ring-slate-900/10 group-hover:ring-[#D4AF37]/50 shadow-sm',
-    footer: 'w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 ring-1 ring-stone-300/80 shadow-sm',
-    custom: 'w-10 h-10 ring-1 ring-slate-900/10 shadow-sm',
+    navbar: 'w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10',
+    footer: 'w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11',
+    custom: 'w-10 h-10',
   };
 
   const customStyle = size ? { width: `${size}px`, height: `${size}px` } : undefined;
@@ -65,52 +63,28 @@ export default function PersonalBrandLogo({
     <div
       style={customStyle}
       className={cn(
-        'relative flex-shrink-0 rounded-full overflow-hidden select-none transition-all duration-300',
+        'relative flex-shrink-0 flex items-center justify-center select-none transition-transform duration-300',
         variantStyles[variant] || variantStyles.navbar,
         className
       )}
-      aria-label={`${PERSONAL_BRAND.name} Avatar`}
+      aria-label={`${PERSONAL_BRAND.name} Logo`}
     >
-      {/* 
-        Graceful Monogram Fallback ("S"):
-        Visible whenever the image hasn't loaded yet or encounters an error (e.g., file not yet uploaded).
-        Prevents layout shift, broken image icons, or blank containers.
-      */}
-      <div
-        className={cn(
-          'w-full h-full flex items-center justify-center font-display font-bold uppercase transition-colors duration-200',
-          variant === 'footer'
-            ? 'bg-stone-200 text-stone-800'
-            : 'bg-[#0B132B] text-[#FAF8F5]',
-          hasError || !isLoaded ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        )}
-      >
-        <span className="text-[13px] sm:text-sm md:text-base font-bold tracking-tight text-[#D4AF37]">
-          {PERSONAL_BRAND.initial}
-        </span>
-      </div>
-
-      {/* 
-        Personal Profile Photo:
-        Rendered from centralized configuration (public/images/brand-logo/sayed-ahmad.webp).
-        Fades in smoothly upon successful load.
-      */}
-      {!hasError && (
+      {!hasError ? (
         <img
           src={resolvedSrc}
           alt={alt}
           width={size || 44}
           height={size || 44}
           decoding="async"
-          onLoad={() => setIsLoaded(true)}
           onError={() => setHasError(true)}
           loading="eager"
           referrerPolicy="no-referrer"
-          className={cn(
-            'absolute inset-0 w-full h-full object-cover object-center rounded-full transition-opacity duration-300',
-            isLoaded ? 'opacity-100' : 'opacity-0'
-          )}
+          className="w-full h-full object-contain transition-opacity duration-300"
         />
+      ) : (
+        <div className="w-full h-full rounded-full bg-[#0B132B] flex items-center justify-center text-[#D4AF37] font-bold text-xs">
+          {PERSONAL_BRAND.initial}
+        </div>
       )}
     </div>
   );
