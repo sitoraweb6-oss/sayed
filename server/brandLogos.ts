@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 
 const SUPPORTED_EXTENSIONS = new Set([
   '.png',
@@ -10,14 +11,35 @@ const SUPPORTED_EXTENSIONS = new Set([
   '.avif'
 ]);
 
+/**
+ * Searches for brand logos across source, dist, and deployment root directories.
+ * ESM safe without bare __dirname references.
+ */
 export function getDiscoveredBrandLogos(rootDir: string = process.cwd()): string[] {
-  const brandLogoDir = path.join(rootDir, 'public', 'images', 'brand-logo');
-  if (!fs.existsSync(brandLogoDir)) {
+  let moduleDir = '';
+  try {
+    moduleDir = path.dirname(fileURLToPath(import.meta.url));
+  } catch {
+    moduleDir = rootDir;
+  }
+
+  const candidateDirs = [
+    path.join(rootDir, 'public', 'images', 'brand-logo'),
+    path.join(rootDir, 'dist', 'images', 'brand-logo'),
+    path.join(moduleDir, '..', 'public', 'images', 'brand-logo'),
+    path.join(moduleDir, '..', 'dist', 'images', 'brand-logo'),
+    path.join(moduleDir, 'images', 'brand-logo'),
+  ];
+
+  const brandLogoDir = candidateDirs.find((dir) => {
     try {
-      fs.mkdirSync(brandLogoDir, { recursive: true });
+      return fs.existsSync(dir) && fs.statSync(dir).isDirectory();
     } catch {
-      // ignore
+      return false;
     }
+  });
+
+  if (!brandLogoDir) {
     return [];
   }
 
