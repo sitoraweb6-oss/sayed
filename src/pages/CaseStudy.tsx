@@ -2,8 +2,18 @@ import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { useState } from 'react';
-import { portfolioProjects } from '../data/portfolio';
+import { portfolioProjects, getPortfolioImageUrl } from '../data/portfolio';
 import { mockProjects } from '../data/mockData';
+
+function resolveAssetUrl(rawPath: string): string {
+  if (!rawPath) return '';
+  if (rawPath.startsWith('http://') || rawPath.startsWith('https://') || rawPath.startsWith('data:')) {
+    return rawPath;
+  }
+  const baseUrl = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+  const cleanPath = rawPath.startsWith('/') ? rawPath : `/${rawPath}`;
+  return baseUrl ? `${baseUrl}${cleanPath}` : cleanPath;
+}
 
 export default function CaseStudy() {
   const { slug } = useParams<{ slug: string }>();
@@ -107,7 +117,7 @@ export default function CaseStudy() {
           <div className="w-full aspect-[16/9] md:aspect-[2/1] bg-stone-200 rounded-3xl overflow-hidden mb-24 relative isolate">
             {!imgError ? (
               <img 
-                src={thumbnailImage} 
+                src={resolveAssetUrl(thumbnailImage)} 
                 alt={`${title} Preview`} 
                 width={1200}
                 height={675}

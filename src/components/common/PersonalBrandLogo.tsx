@@ -26,6 +26,20 @@ export interface PersonalBrandLogoProps {
   alt?: string;
 }
 
+/**
+ * Normalizes asset paths for production, ensuring compatibility with
+ * root domains, base URL subpaths, CDNs, Vercel, and preview environments.
+ */
+function resolveAssetUrl(rawPath: string): string {
+  if (!rawPath) return '';
+  if (rawPath.startsWith('http://') || rawPath.startsWith('https://') || rawPath.startsWith('data:')) {
+    return rawPath;
+  }
+  const baseUrl = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+  const cleanPath = rawPath.startsWith('/') ? rawPath : `/${rawPath}`;
+  return baseUrl ? `${baseUrl}${cleanPath}` : cleanPath;
+}
+
 export default function PersonalBrandLogo({
   variant = 'navbar',
   size,
@@ -35,6 +49,8 @@ export default function PersonalBrandLogo({
 }: PersonalBrandLogoProps) {
   const [hasError, setHasError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const resolvedSrc = resolveAssetUrl(imageSrc);
 
   // Variant size & style presets
   const variantStyles = {
@@ -76,12 +92,12 @@ export default function PersonalBrandLogo({
 
       {/* 
         Personal Profile Photo:
-        Rendered from centralized configuration (public/images/brand-logo/profile.webp).
+        Rendered from centralized configuration (public/images/brand-logo/sayed-ahmad.webp).
         Fades in smoothly upon successful load.
       */}
       {!hasError && (
         <img
-          src={imageSrc}
+          src={resolvedSrc}
           alt={alt}
           width={size || 44}
           height={size || 44}

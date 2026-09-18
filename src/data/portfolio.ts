@@ -22,6 +22,19 @@ export interface Project {
   featured?: boolean;
 }
 
+/**
+ * Automatically maps a project number or ID to its corresponding portfolio image.
+ * e.g., 1 -> /images/portfolio/portfolio-01.webp, 15 -> /images/portfolio/portfolio-15.webp
+ */
+export function getPortfolioImageUrl(projectIdOrIndex: string | number): string {
+  const num = typeof projectIdOrIndex === 'number' ? projectIdOrIndex : parseInt(projectIdOrIndex, 10);
+  if (!isNaN(num) && num >= 1) {
+    const padded = String(num).padStart(2, '0');
+    return `/images/portfolio/portfolio-${padded}.webp`;
+  }
+  return `/images/portfolio/portfolio-01.webp`;
+}
+
 export const portfolioStats = [
   { value: "50+", label: "WEBSITES SHIPPED" },
   { value: "4+", label: "COUNTRIES SERVED" },
@@ -51,7 +64,7 @@ export const portfolioProjects: Project[] = [
     techStack: ["WordPress", "WooCommerce", "Elementor"],
     skills: ["E-commerce Website Development", "Web Design", "WordPress", "Elementor"],
     liveUrl: "https://www.tanowra.com/",
-    image: "/images/portfolio/portfolio-1.webp",
+    image: getPortfolioImageUrl(1),
     cta: "Need a premium e-commerce experience for your brand? Let’s discuss your project.",
     seo: {
       metaTitle: "Tanowra | Premium Leather & Footwear E-commerce Website",
@@ -81,7 +94,7 @@ export const portfolioProjects: Project[] = [
     techStack: ["React", "Firebase", "JavaScript"],
     skills: ["Full-Stack Web Development", "Frontend Architecture", "Database Design", "Workflow Implementation", "React"],
     liveUrl: "https://mithaq.sitora.org/",
-    image: "/images/portfolio/portfolio-2.webp",
+    image: getPortfolioImageUrl(2),
     cta: "Have a complex workflow that needs a custom web application? Let’s discuss it.",
     seo: {
       metaTitle: "Mithaq | Custom Financial Community Management Platform",
@@ -110,7 +123,7 @@ export const portfolioProjects: Project[] = [
     techStack: ["WordPress", "WooCommerce", "Custom CSS", "JavaScript"],
     skills: ["E-commerce Website Development", "Web Design", "WordPress", "WooCommerce", "HTML"],
     liveUrl: "https://glamtouch.com.bd/",
-    image: "/images/portfolio/portfolio-3.webp",
+    image: getPortfolioImageUrl(3),
     cta: "Looking to elevate your online fashion store? Let’s connect.",
     seo: {
       metaTitle: "Glam Touch | Modest Fashion E-commerce Website",
@@ -138,7 +151,7 @@ export const portfolioProjects: Project[] = [
     techStack: ["WordPress", "PHP", "JavaScript", "Custom CSS"],
     skills: ["Healthcare Website Development", "WordPress", "PHP", "Web Design"],
     liveUrl: "https://continental.health/",
-    image: "/images/portfolio/portfolio-4.webp",
+    image: getPortfolioImageUrl(4),
     cta: "Need a structured, professional website for your healthcare facility? Let's talk.",
     seo: {
       metaTitle: "Continental Health | Professional Healthcare & Hospital Website",
@@ -166,7 +179,7 @@ export const portfolioProjects: Project[] = [
     techStack: ["React", "Node.js", "JavaScript"],
     skills: ["Full-Stack Web Development", "Front-End Development", "Back-End Development", "Web Design"],
     liveUrl: "https://style-decor-milon.netlify.app/",
-    image: "/images/portfolio/portfolio-5.webp",
+    image: getPortfolioImageUrl(5),
     cta: "Planning a custom business management platform? Let’s discuss your goals.",
     seo: {
       metaTitle: "Style Decor & Events | Custom Interior Design Portfolio & Admin System",
@@ -195,7 +208,7 @@ export const portfolioProjects: Project[] = [
     techStack: ["React", "Tailwind CSS"],
     skills: ["React", "Tailwind CSS", "Website Redesign", "Web Development", "Web Design"],
     liveUrl: "https://north-shore.sitora.org/",
-    image: "/images/portfolio/portfolio-6.webp",
+    image: getPortfolioImageUrl(6),
     cta: "Ready to build a high-performing website for your service business? Let’s talk.",
     seo: {
       metaTitle: "North Shore Roofing | Conversion-Focused Service Business Website",
@@ -223,7 +236,7 @@ export const portfolioProjects: Project[] = [
     techStack: ["WordPress", "WooCommerce"],
     skills: ["E-commerce Website Development", "WooCommerce", "WordPress", "Web Development", "Web Design"],
     liveUrl: "https://inayaattire.com/",
-    image: "/images/portfolio/portfolio-7.webp",
+    image: getPortfolioImageUrl(7),
     cta: "Looking for a reliable WooCommerce development partner? Let’s connect.",
     seo: {
       metaTitle: "Inaya Attire | Modest Fashion E-commerce Store",
@@ -251,7 +264,7 @@ export const portfolioProjects: Project[] = [
     techStack: ["WordPress", "Elementor", "CSS"],
     skills: ["WordPress E-commerce", "WordPress", "Elementor", "CSS", "Web Design"],
     liveUrl: "https://midley.shop/",
-    image: "/images/portfolio/portfolio-8.webp",
+    image: getPortfolioImageUrl(8),
     cta: "Need a scalable multi-category e-commerce platform? Let’s discuss your vision.",
     seo: {
       metaTitle: "Midley | Multi-Category E-commerce Platform",
@@ -279,7 +292,7 @@ export const portfolioProjects: Project[] = [
     techStack: ["React", "Next.js", "Tailwind CSS", "JavaScript"],
     skills: ["Web Development", "Web Design", "Web Application", "React", "Next.js"],
     liveUrl: "https://sitora.org/",
-    image: "/images/portfolio/portfolio-9.webp",
+    image: getPortfolioImageUrl(9),
     cta: "Looking to elevate your agency or business website? Let’s collaborate.",
     seo: {
       metaTitle: "Sitora Web | Premium Digital Agency & Portfolio Platform",
@@ -308,7 +321,7 @@ export const portfolioProjects: Project[] = [
     techStack: ["WordPress", "Custom CSS", "HTML", "CartFlows"],
     skills: ["WordPress", "E-commerce Website Development", "Web Design", "Landing Page", "Elementor"],
     liveUrl: "https://signofmodesty.com/step/porda_set_new/",
-    image: "/images/portfolio/portfolio-10.webp",
+    image: getPortfolioImageUrl(10),
     cta: "Need a conversion-focused product page? Let’s discuss your goals.",
     seo: {
       metaTitle: "Sign of Modesty | Conversion-Focused E-commerce Funnel",
@@ -336,7 +349,7 @@ export const portfolioProjects: Project[] = [
     techStack: ["WordPress", "WooCommerce"],
     skills: ["WordPress", "WordPress E-commerce", "Web Design", "Landing Page Development"],
     liveUrl: "https://buy.evaglow.sg/step/2-in-1-protien-collagen-shakes/",
-    image: "/images/portfolio/portfolio-11.webp",
+    image: getPortfolioImageUrl(11),
     cta: "Ready to launch a dedicated product landing page? Let’s get started.",
     seo: {
       metaTitle: "EvaGlow | Nutrition Product E-commerce Landing Page",
@@ -364,7 +377,7 @@ export const portfolioProjects: Project[] = [
     techStack: ["React", "JavaScript", "Tailwind CSS"],
     skills: ["Front-End Development", "Web Design", "React", "Tailwind CSS"],
     liveUrl: "https://future-bicycle.sitora.org/",
-    image: "/images/portfolio/portfolio-12.webp",
+    image: getPortfolioImageUrl(12),
     cta: "Want to create an engaging product showcase for your brand? Let’s connect.",
     seo: {
       metaTitle: "Future Bicycle | Interactive React Product Showcase",
@@ -392,7 +405,7 @@ export const portfolioProjects: Project[] = [
     techStack: ["React", "Tailwind CSS", "JavaScript"],
     skills: ["Front-End Development", "Interactive Design", "React", "Tailwind CSS", "UI Development"],
     liveUrl: "https://ocean.sitora.org/",
-    image: "/images/portfolio/portfolio-13.webp",
+    image: getPortfolioImageUrl(13),
     cta: "Interested in building an immersive digital experience? Let’s talk.",
     seo: {
       metaTitle: "Ocean Exploration | Cinematic Front-End Web Experience",
@@ -420,7 +433,7 @@ export const portfolioProjects: Project[] = [
     techStack: ["React", "Tailwind CSS", "JavaScript"],
     skills: ["React", "Tailwind CSS", "Web Development", "Web Design"],
     liveUrl: "https://movie-master-pro-milon.netlify.app/",
-    image: "/images/portfolio/portfolio-14.webp",
+    image: getPortfolioImageUrl(14),
     cta: "Planning a data-driven media or discovery application? Let’s collaborate.",
     seo: {
       metaTitle: "Movie Master Pro | React Movie Discovery Web Application",
@@ -448,7 +461,7 @@ export const portfolioProjects: Project[] = [
     techStack: ["React"],
     skills: ["Creative Front-End Development", "Experimental Design", "React", "UI Concepting"],
     liveUrl: "https://gander-futuristic.vercel.app/",
-    image: "/images/portfolio/portfolio-15.webp",
+    image: getPortfolioImageUrl(15),
     cta: "Looking for bold, experimental digital design? Let’s explore your ideas.",
     seo: {
       metaTitle: "Gander Futuristic | Experimental UI Web Experience",

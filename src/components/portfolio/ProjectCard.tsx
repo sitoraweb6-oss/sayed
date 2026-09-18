@@ -1,15 +1,26 @@
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import { Project } from '../../data/portfolio';
+import { Project, getPortfolioImageUrl } from '../../data/portfolio';
 import { useState } from 'react';
-import { cn } from '../../lib/utils';
 
 interface ProjectCardProps {
   project: Project;
   onOpenCaseStudy: (project: Project) => void;
 }
 
+function resolveAssetUrl(rawPath: string): string {
+  if (!rawPath) return '';
+  if (rawPath.startsWith('http://') || rawPath.startsWith('https://') || rawPath.startsWith('data:')) {
+    return rawPath;
+  }
+  const baseUrl = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+  const cleanPath = rawPath.startsWith('/') ? rawPath : `/${rawPath}`;
+  return baseUrl ? `${baseUrl}${cleanPath}` : cleanPath;
+}
+
 export default function ProjectCard({ project, onOpenCaseStudy }: ProjectCardProps) {
   const [imageError, setImageError] = useState(false);
+
+  const imageSrc = resolveAssetUrl(project.image || getPortfolioImageUrl(project.id));
 
   return (
     <div className="group flex flex-col h-full bg-white rounded-2xl border border-stone-200/60 overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#0B132B]/10 hover:border-[#0B132B]/10">
@@ -19,7 +30,7 @@ export default function ProjectCard({ project, onOpenCaseStudy }: ProjectCardPro
       >
         {!imageError ? (
           <img 
-            src={project.image} 
+            src={imageSrc} 
             alt={project.title} 
             width={640}
             height={440}
@@ -31,8 +42,8 @@ export default function ProjectCard({ project, onOpenCaseStudy }: ProjectCardPro
           />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center bg-stone-100 text-stone-400 p-6 text-center">
-             <span className="text-xs uppercase tracking-widest mb-2">{project.category}</span>
-             <span className="font-medium text-stone-500">{project.title}</span>
+             <span className="text-xs uppercase tracking-widest mb-2 font-bold text-[#D4AF37]">{project.category}</span>
+             <span className="font-display font-bold text-[#0B132B]">{project.title}</span>
           </div>
         )}
         <div className="absolute inset-0 bg-[#0B132B]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />

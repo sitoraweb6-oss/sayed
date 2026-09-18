@@ -2,12 +2,12 @@
  * Centralized configuration for Personal Brand Identity & Profile Logo.
  * 
  * IMPORTANT:
- * - Upload your personal photo/avatar to `public/images/brand-logo/profile.webp`
- * - When you replace or rename the image, only update `PERSONAL_LOGO` below.
- * - This personal logo system is strictly separated from client logos in `public/images/brand-logo/`.
+ * - Dedicated personal profile image for Sayed Ahmad: `public/images/brand-logo/sayed-ahmad.webp`
+ * - When uploaded/replaced in `public/images/brand-logo/sayed-ahmad.webp`, it automatically updates everywhere.
+ * - This personal logo system is strictly separated from client SVG logos and favicon.
  */
 
-export const PERSONAL_LOGO = '/images/profile/profile.webp';
+export const PERSONAL_LOGO = '/images/brand-logo/sayed-ahmad.webp';
 
 export const PERSONAL_BRAND = {
   name: 'Sayed Ahmad',

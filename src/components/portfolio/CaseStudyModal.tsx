@@ -1,12 +1,22 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, ArrowUpRight } from 'lucide-react';
-import { Project } from '../../data/portfolio';
+import { Project, getPortfolioImageUrl } from '../../data/portfolio';
 
 interface CaseStudyModalProps {
   project: Project | null;
   isOpen: boolean;
   onClose: () => void;
+}
+
+function resolveAssetUrl(rawPath: string): string {
+  if (!rawPath) return '';
+  if (rawPath.startsWith('http://') || rawPath.startsWith('https://') || rawPath.startsWith('data:')) {
+    return rawPath;
+  }
+  const baseUrl = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
+  const cleanPath = rawPath.startsWith('/') ? rawPath : `/${rawPath}`;
+  return baseUrl ? `${baseUrl}${cleanPath}` : cleanPath;
 }
 
 export default function CaseStudyModal({ project, isOpen, onClose }: CaseStudyModalProps) {
@@ -75,7 +85,7 @@ export default function CaseStudyModal({ project, isOpen, onClose }: CaseStudyMo
                   <div className="lg:sticky lg:top-0 w-full h-[40vh] lg:h-[calc(95vh-4rem)] min-h-[300px]">
                     {!imageError ? (
                       <img 
-                        src={project.image} 
+                        src={resolveAssetUrl(project.image || getPortfolioImageUrl(project.id))} 
                         alt={project.title}
                         onError={() => setImageError(true)}
                         className="w-full h-full object-cover"
