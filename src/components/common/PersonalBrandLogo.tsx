@@ -63,7 +63,7 @@ export default function PersonalBrandLogo({
     <div
       style={customStyle}
       className={cn(
-        'relative flex-shrink-0 flex items-center justify-center select-none transition-transform duration-300',
+        'relative flex-shrink-0 flex items-center justify-center rounded-full select-none transition-transform duration-300 ease-out group-hover:scale-105 hover:scale-105 active:scale-95 cursor-pointer',
         variantStyles[variant] || variantStyles.navbar,
         className
       )}
@@ -79,10 +79,10 @@ export default function PersonalBrandLogo({
           onError={() => setHasError(true)}
           loading="eager"
           referrerPolicy="no-referrer"
-          className="w-full h-full object-contain transition-opacity duration-300"
+          className="w-full h-full rounded-full object-cover border-2 border-[#D4AF37] shadow-sm ring-1 ring-[#D4AF37]/30 group-hover:ring-[#D4AF37]/60 group-hover:shadow-md transition-all duration-300 ease-out"
         />
       ) : (
-        <div className="w-full h-full rounded-full bg-[#0B132B] flex items-center justify-center text-[#D4AF37] font-bold text-xs">
+        <div className="w-full h-full rounded-full bg-[#0B132B] border-2 border-[#D4AF37] flex items-center justify-center text-[#D4AF37] font-bold text-xs shadow-sm group-hover:ring-1 group-hover:ring-[#D4AF37]/50 transition-all duration-300">
           {PERSONAL_BRAND.initial}
         </div>
       )}
