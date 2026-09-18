@@ -29,15 +29,20 @@ export default function Hero() {
 
       <div className="max-w-4xl mx-auto px-6 lg:px-8 relative z-10 w-full flex flex-col items-center text-center mt-6 md:mt-12">
         
-        {/* Eyebrow */}
+        {/* Highlighted Eyebrow Badge */}
         <motion.div 
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-8 md:mb-10 flex items-center justify-center text-brand-muted text-[0.8rem] md:text-[0.95rem] italic font-medium"
+          className="mb-8 md:mb-10 inline-flex items-center justify-center gap-2.5 px-4 sm:px-5 py-2 rounded-full bg-white/90 backdrop-blur-md border border-[#D4AF37]/40 shadow-[0_2px_16px_rgba(212,175,55,0.18)] hover:border-[#D4AF37]/70 transition-all duration-300"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-brand-accent/80 mr-3 shadow-sm mb-0.5"></span>
-          Available for selected projects
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span className="text-[11.5px] sm:text-xs font-semibold tracking-[0.14em] uppercase text-[#0B132B]">
+            Available for selected projects
+          </span>
         </motion.div>
         
         {/* Headline */}
@@ -93,41 +98,28 @@ export default function Hero() {
           I help agencies and businesses turn designs, ideas, and complex requirements into reliable, production-ready digital experiences.
         </motion.p>
         
-        {/* CTAs */}
+        {/* CTAs: Clean, editorial, single primary with understated secondary */}
         <motion.div 
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           className="flex flex-col items-center w-full"
         >
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 w-full sm:w-auto">
             <Link 
-              to="/work" 
-              className="w-full sm:w-auto inline-flex items-center justify-center px-9 py-4 md:py-4 text-[0.75rem] md:text-[0.8rem] font-bold tracking-widest text-white bg-brand-text rounded-full hover:bg-opacity-90 transition-colors group shadow-sm"
+              to="/#selected-work" 
+              className="w-full sm:w-auto inline-flex items-center justify-center px-8 sm:px-9 py-3.5 sm:py-4 text-[0.75rem] md:text-[0.8rem] font-bold tracking-[0.18em] uppercase text-white bg-brand-text rounded-full hover:bg-opacity-90 transition-all duration-300 group shadow-sm hover:shadow-md hover:-translate-y-0.5"
             >
-              VIEW MY WORK 
+              <span>View My Work</span>
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
+            
             <Link 
               to="/contact" 
-              className="w-full sm:w-auto inline-flex items-center justify-center px-9 py-4 md:py-4 text-[0.75rem] md:text-[0.8rem] font-bold tracking-widest text-brand-text bg-white border border-brand-text/10 rounded-full hover:border-brand-text/30 transition-all group shadow-sm"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-8 sm:px-9 py-3.5 sm:py-4 text-[0.75rem] md:text-[0.8rem] font-extrabold tracking-[0.18em] uppercase text-brand-text bg-[#FAF8F5] border-2 border-brand-text/15 hover:border-brand-text hover:bg-brand-text hover:text-white rounded-full transition-all duration-300 group shadow-sm hover:shadow-lg hover:-translate-y-0.5 active:scale-98"
             >
-              LET'S WORK TOGETHER
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-
-          {/* Secondary Editorial Story CTA - Single Line Clean Highlight */}
-          <div className="mt-5 md:mt-6 flex items-center justify-center">
-            <Link
-              to="/my-story"
-              className="inline-flex items-center gap-2 text-[11px] sm:text-xs font-mono font-semibold tracking-[0.14em] uppercase text-stone-900 bg-amber-500/10 border border-amber-500/30 hover:border-amber-500/60 hover:bg-amber-500/20 transition-all duration-200 py-1.5 px-4 rounded-full group"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#8C701B]" />
-              <span className="group-hover:text-[#8C701B] transition-colors">
-                MEET THE PERSON BEHIND THE WORK
-              </span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#8C701B] transition-transform duration-200 group-hover:translate-x-1" />
+              <span>LET'S WORK TOGETHER</span>
+              <ArrowRight className="ml-2 w-4 h-4 text-brand-accent group-hover:text-white group-hover:translate-x-1 transition-all" />
             </Link>
           </div>
         </motion.div>

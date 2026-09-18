@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, type Variants } from 'motion/react';
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import TechnicalFoundations from './TechnicalFoundations';
+import { useTouchSwipe } from '../../hooks/useTouchSwipe';
 
 interface Capability {
   id: string;
@@ -67,44 +68,13 @@ const capabilities: Capability[] = [
 ];
 
 export default function Services() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [touchStartX, setTouchStartX] = useState<number | null>(null);
-  const [touchEndX, setTouchEndX] = useState<number | null>(null);
-
-  const minSwipeDistance = 40;
-
-  const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEndX(null);
-    setTouchStartX(e.targetTouches[0].clientX);
-  };
-
-  const onTouchMove = (e: React.TouchEvent) => {
-    setTouchEndX(e.targetTouches[0].clientX);
-  };
-
-  const onTouchEnd = () => {
-    if (!touchStartX || !touchEndX) return;
-    const distance = touchStartX - touchEndX;
-    if (distance > minSwipeDistance && currentSlide < capabilities.length - 1) {
-      setCurrentSlide((prev) => prev + 1);
-    } else if (distance < -minSwipeDistance && currentSlide > 0) {
-      setCurrentSlide((prev) => prev - 1);
-    }
-    setTouchStartX(null);
-    setTouchEndX(null);
-  };
-
-  const nextSlide = () => {
-    if (currentSlide < capabilities.length - 1) {
-      setCurrentSlide((prev) => prev + 1);
-    }
-  };
-
-  const prevSlide = () => {
-    if (currentSlide > 0) {
-      setCurrentSlide((prev) => prev - 1);
-    }
-  };
+  const {
+    currentSlide,
+    setCurrentSlide,
+    nextSlide,
+    prevSlide,
+    handlers: { onTouchStart, onTouchMove, onTouchEnd },
+  } = useTouchSwipe({ itemCount: capabilities.length });
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },

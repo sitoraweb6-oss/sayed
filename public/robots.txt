@@ -1,0 +1,6 @@
+# robots.txt for Sayed Ahmad Portfolio
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://sitora.org/sitemap.xml

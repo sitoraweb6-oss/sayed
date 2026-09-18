@@ -3,9 +3,8 @@ import Hero from '../components/home/Hero';
 import TrustStrip from '../components/home/TrustStrip';
 import SelectedWork from '../components/home/SelectedWork';
 import Philosophy from '../components/home/Philosophy';
-import BrandsMarquee from '../components/home/BrandsMarquee';
+import BrandLogoMarquee from '../components/home/BrandLogoMarquee';
 import WhoIWorkWith from '../components/home/WhoIWorkWith';
-import ValueProposition from '../components/home/ValueProposition';
 import Services from '../components/home/Services';
 import AboutPreview from '../components/home/AboutPreview';
 import FinalCTA from '../components/home/FinalCTA';
@@ -23,9 +22,8 @@ export default function Home() {
         <TrustStrip />
         <SelectedWork />
         <Philosophy />
-        <ValueProposition />
         <WhoIWorkWith />
-        <BrandsMarquee />
+        <BrandLogoMarquee />
         <Services />
         <div id="about" className="scroll-mt-20 md:scroll-mt-24" />
         <AboutPreview />

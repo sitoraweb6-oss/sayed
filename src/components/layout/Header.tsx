@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import PersonalBrandLogo from '../common/PersonalBrandLogo';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -23,14 +24,17 @@ export default function Header() {
     <header className="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-900/[0.04] transition-all duration-300 py-5">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center relative">
         
-        {/* Left: Logo */}
-        <Link to="/" className="flex flex-col group z-10">
-          <span className="text-[1.1rem] md:text-[1.25rem] font-extrabold tracking-tight text-brand-text uppercase leading-tight">
-            Sayed Ahmad
-          </span>
-          <span className="text-[0.45rem] md:text-[0.55rem] text-brand-muted font-bold tracking-[0.2em] uppercase mt-0.5 group-hover:text-brand-text transition-colors">
-            Digital Solutions Partner
-          </span>
+        {/* Left: Logo with Personal Avatar */}
+        <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group z-10">
+          <PersonalBrandLogo variant="navbar" />
+          <div className="flex flex-col">
+            <span className="text-[1.05rem] sm:text-[1.1rem] md:text-[1.25rem] font-extrabold tracking-tight text-brand-text uppercase leading-tight group-hover:text-stone-700 transition-colors">
+              Sayed Ahmad
+            </span>
+            <span className="text-[0.45rem] md:text-[0.55rem] text-brand-muted font-bold tracking-[0.2em] uppercase mt-0.5 group-hover:text-brand-text transition-colors">
+              Digital Solutions Partner
+            </span>
+          </div>
         </Link>
 
         {/* Center: Desktop Navigation */}

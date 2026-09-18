@@ -27,7 +27,6 @@ export default function Contact() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [serverErrorNote, setServerErrorNote] = useState<string | null>(null);
 
   // Sync service default when switching pathways
   useEffect(() => {
@@ -83,7 +82,6 @@ export default function Contact() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setSubmitStatus('idle');
-    setServerErrorNote(null);
 
     // Bot detection check
     if (honeypot) {
@@ -134,10 +132,9 @@ export default function Contact() {
         setErrors({});
       } else {
         setSubmitStatus('error');
-        if (data.code === 'MISSING_CREDENTIALS' || data.error?.includes('RESEND_API_KEY')) {
-          setServerErrorNote('Note for site admin: The RESEND_API_KEY server secret is not yet configured.');
-        } else if (data.error) {
-          setServerErrorNote(`Note for site admin: ${data.error}`);
+        // Only log internal errors to console for secure developer debugging; never expose backend env details in UI
+        if (data.error || data.code) {
+          console.error('[Contact Form Debug]', data.error || data.code);
         }
       }
     } catch (err) {
@@ -317,11 +314,6 @@ export default function Contact() {
                           {OFFICIAL_EMAIL}
                         </a>.
                       </p>
-                      {serverErrorNote && (
-                        <p className="text-[11px] font-mono text-rose-700 mt-2 bg-rose-100/70 p-2 rounded">
-                          {serverErrorNote}
-                        </p>
-                      )}
                     </div>
                   </div>
                 )}

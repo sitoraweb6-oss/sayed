@@ -1,13 +1,37 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-display: "Oswald", sans-serif;
   
+  /* Centralized Core Color Tokens */
   --color-brand-bg: #FFFFFF;
-  --color-brand-text: #0F172A;
+  --color-brand-bg-subtle: #FAF8F5;
+  --color-brand-bg-muted: #F5F2EB;
+  --color-brand-bg-dark: #0B132B;
+  
+  --color-brand-text: #0B132B;
+  --color-brand-text-secondary: #4A5568;
   --color-brand-muted: #64748B;
-  --color-brand-accent: #6C8EBF;
+  
+  --color-brand-accent: #D4AF37;
+  --color-brand-accent-gold: #C5A028;
+  --color-brand-accent-soft: rgba(212, 175, 55, 0.12);
+  --color-brand-border: rgba(11, 19, 43, 0.08);
+  --color-brand-border-dark: rgba(255, 255, 255, 0.1);
+}
+
+:root {
+  --color-bg-base: #FFFFFF;
+  --color-bg-subtle: #FAF8F5;
+  --color-bg-card: #FFFFFF;
+  --color-bg-dark: #0B132B;
+  --color-text-primary: #0B132B;
+  --color-text-secondary: #4A5568;
+  --color-text-muted: #64748B;
+  --color-border: rgba(11, 19, 43, 0.08);
+  --color-accent: #D4AF37;
+  --color-accent-soft: rgba(212, 175, 55, 0.12);
 }
 
 body {
@@ -17,3 +41,101 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* GPU-accelerated continuous background ambient animations */
+@keyframes float-bubble-1 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(35px, -25px, 0) scale(1.05);
+  }
+  66% {
+    transform: translate3d(-25px, 30px, 0) scale(0.97);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes float-bubble-2 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(-40px, 30px, 0) scale(0.96);
+  }
+  66% {
+    transform: translate3d(25px, -35px, 0) scale(1.04);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.animate-float-bubble-1 {
+  animation: float-bubble-1 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-bubble-2 {
+  animation: float-bubble-2 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Hardware-accelerated brand marquee keyframes */
+@keyframes marquee-rtl {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-ltr {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+.animate-marquee-rtl {
+  animation: marquee-rtl 38s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-ltr {
+  animation: marquee-ltr 38s linear infinite;
+  will-change: transform;
+}
+
+/* Pause marquee on hover */
+.marquee-track:hover .animate-marquee-rtl,
+.marquee-track:hover .animate-marquee-ltr {
+  animation-play-state: paused;
+}
+
+/* Below-the-fold content visibility rendering optimization */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 400px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-float-bubble-1,
+  .animate-float-bubble-2,
+  .animate-marquee-rtl,
+  .animate-marquee-ltr {
+    animation: none !important;
+  }
+}
+

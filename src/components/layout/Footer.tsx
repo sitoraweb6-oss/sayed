@@ -1,18 +1,22 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Linkedin, Mail, Calendar } from 'lucide-react';
+import PersonalBrandLogo from '../common/PersonalBrandLogo';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer id="site-footer" className="bg-stone-100 pt-10 sm:pt-14 md:pt-16 lg:pt-20 pb-8 sm:pb-10 border-t border-stone-200 mt-8 sm:mt-14 md:mt-20">
+    <footer id="site-footer" className="bg-stone-100 pt-10 sm:pt-14 md:pt-16 lg:pt-20 pb-8 sm:pb-10 border-t border-stone-200 mt-8 sm:mt-14 md:mt-20 content-visibility-auto">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-8 sm:mb-12 md:mb-16">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <h3 className="text-xl sm:text-2xl font-medium tracking-tight mb-1.5 sm:mb-2 text-stone-900">
-              Sayed Ahmad
-            </h3>
+            <Link to="/" className="inline-flex items-center gap-3 mb-2 sm:mb-2.5 group">
+              <PersonalBrandLogo variant="footer" />
+              <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-stone-900 group-hover:text-stone-700 transition-colors">
+                Sayed Ahmad
+              </h3>
+            </Link>
             <p className="text-[13.5px] sm:text-sm text-stone-500 max-w-sm mb-4 sm:mb-6 leading-relaxed">
               Business-focused web development for agencies, businesses, and growing brands.
             </p>

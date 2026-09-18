@@ -27,6 +27,11 @@ export default function LocalImage({
         <img
           src={src}
           alt={alt}
+          width={800}
+          height={600}
+          loading="lazy"
+          decoding="async"
+          referrerPolicy="no-referrer"
           onLoad={(e) => {
             const img = e.currentTarget;
             // Detect if it's the unpopulated 1x1 initial placeholder
@@ -40,7 +45,6 @@ export default function LocalImage({
           className={`w-full h-full object-cover transition-opacity duration-500 ${
             isLoaded ? 'opacity-100' : 'opacity-0'
           }`}
-          loading="lazy"
         />
       )}
 

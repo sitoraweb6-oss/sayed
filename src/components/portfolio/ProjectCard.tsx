@@ -21,7 +21,11 @@ export default function ProjectCard({ project, onOpenCaseStudy }: ProjectCardPro
           <img 
             src={project.image} 
             alt={project.title} 
+            width={640}
+            height={440}
             loading="lazy"
+            decoding="async"
+            referrerPolicy="no-referrer"
             onError={() => setImageError(true)}
             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />

@@ -14,8 +14,6 @@ export default function SelectedWork() {
   const [activeCategory, setActiveCategory] = useState('All Work');
   const [scrollProgress, setScrollProgress] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const autoScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const autoScrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Extract unique categories based on exact current project data
   const categories = useMemo(() => {
@@ -42,61 +40,9 @@ export default function SelectedWork() {
 
   useEffect(() => {
     handleScroll();
-    window.addEventListener('resize', handleScroll);
+    window.addEventListener('resize', handleScroll, { passive: true });
     return () => window.removeEventListener('resize', handleScroll);
   }, [categories]);
-
-  // Auto-scrolling logic
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    const startAutoScroll = () => {
-      if (autoScrollIntervalRef.current) clearInterval(autoScrollIntervalRef.current);
-      autoScrollIntervalRef.current = setInterval(() => {
-        if (container) {
-          const { scrollLeft, scrollWidth, clientWidth } = container;
-          const maxScroll = scrollWidth - clientWidth;
-          
-          if (maxScroll > 0) {
-            if (scrollLeft >= maxScroll - 5) {
-              container.scrollTo({ left: 0, behavior: 'smooth' });
-            } else {
-              container.scrollBy({ left: 150, behavior: 'smooth' });
-            }
-          }
-        }
-      }, 3500);
-    };
-
-    startAutoScroll();
-
-    const handleInteraction = () => {
-      if (autoScrollIntervalRef.current) clearInterval(autoScrollIntervalRef.current);
-      if (autoScrollTimeoutRef.current) clearTimeout(autoScrollTimeoutRef.current);
-      
-      autoScrollTimeoutRef.current = setTimeout(() => {
-        startAutoScroll();
-      }, 5000);
-    };
-
-    container.addEventListener('touchstart', handleInteraction, { passive: true });
-    container.addEventListener('touchmove', handleInteraction, { passive: true });
-    container.addEventListener('scroll', handleInteraction, { passive: true });
-    container.addEventListener('mouseenter', handleInteraction);
-    container.addEventListener('mousemove', handleInteraction);
-
-    return () => {
-      if (autoScrollIntervalRef.current) clearInterval(autoScrollIntervalRef.current);
-      if (autoScrollTimeoutRef.current) clearTimeout(autoScrollTimeoutRef.current);
-      
-      container.removeEventListener('touchstart', handleInteraction);
-      container.removeEventListener('touchmove', handleInteraction);
-      container.removeEventListener('scroll', handleInteraction);
-      container.removeEventListener('mouseenter', handleInteraction);
-      container.removeEventListener('mousemove', handleInteraction);
-    };
-  }, []);
 
   const handleCategoryClick = (category: string, e: React.MouseEvent<HTMLButtonElement>) => {
     setActiveCategory(category);
@@ -127,7 +73,7 @@ export default function SelectedWork() {
         // We do not auto-reset visibleCount here to prevent a jarring experience if user already loaded more.
       }
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
     return () => window.removeEventListener('resize', handleResize);
   }, [isMobile]);
 

@@ -205,8 +205,11 @@ function TechCard({ tech }: { tech: Technology }) {
           <img
             src={tech.logo}
             alt={`${tech.name} logo`}
-            className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+            width={44}
+            height={44}
             loading="lazy"
+            decoding="async"
+            className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
             onError={() => setImgError(true)}
           />
         ) : (

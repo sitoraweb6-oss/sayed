@@ -29,7 +29,7 @@ export default function FinalCTA() {
   return (
     <section 
       id="contact-cta"
-      className="py-12 sm:py-16 md:py-20 lg:py-28 bg-[#0B132B] text-[#FAF8F5] relative overflow-hidden border-t border-white/5"
+      className="py-12 sm:py-16 md:py-20 lg:py-28 bg-[#0B132B] text-[#FAF8F5] relative overflow-hidden border-t border-white/5 content-visibility-auto"
     >
       {/* Subtle Warm Amber & Gold Radial Atmosphere */}
       <div 
@@ -77,101 +77,35 @@ export default function FinalCTA() {
           {/* Action Buttons: Primary & Secondary */}
           <motion.div 
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto max-w-xs sm:max-w-none"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto max-w-xs sm:max-w-none"
           >
-            <Link 
-              to="/contact" 
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-9 py-3 sm:py-3.5 md:py-4 text-xs sm:text-[13px] font-semibold tracking-wider uppercase text-[#0B132B] bg-[#FAF8F5] rounded-full hover:bg-white transition-all duration-300 shadow-[0_4px_20px_rgba(250,248,245,0.08)] hover:shadow-[0_8px_28px_rgba(250,248,245,0.18)] hover:-translate-y-0.5 group"
-            >
-              <span>Start a Conversation</span>
-              <ArrowRight className="ml-2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0B132B] transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-
             <a 
               href="https://cal.com/sayed-ahmad/project-consultation" 
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Book a 1:1 Call with Sayed Ahmad (opens in a new tab)"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-9 py-3 sm:py-3.5 md:py-4 text-xs sm:text-[13px] font-semibold tracking-wider uppercase text-[#FAF8F5] bg-white/[0.04] border border-white/15 rounded-full hover:bg-white/[0.08] hover:border-[#D4AF37]/50 transition-all duration-300 hover:-translate-y-0.5 group"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-7 sm:px-9 py-3.5 sm:py-4 text-xs sm:text-[13px] font-semibold tracking-wider uppercase text-[#0B132B] bg-[#FAF8F5] rounded-full hover:bg-white transition-all duration-300 shadow-[0_4px_20px_rgba(250,248,245,0.1)] hover:shadow-[0_8px_28px_rgba(250,248,245,0.2)] hover:-translate-y-0.5 group"
             >
               <span>Book a 1:1 Call</span>
-              <ArrowUpRight className="ml-2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D4AF37] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight className="ml-2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0B132B] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
-          </motion.div>
 
-          {/* Audience Pathways: 2 Tailored Entry Points */}
-          <motion.div 
-            variants={itemVariants}
-            className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mt-8 sm:mt-12 md:mt-16 lg:mt-20 text-left"
-          >
-            {/* Card 1: For Digital Agencies */}
-            <div className="group/card relative rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-8 bg-gradient-to-b from-white/[0.045] to-white/[0.015] border border-white/10 hover:border-[#D4AF37]/45 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between backdrop-blur-sm">
-              <div>
-                <div className="flex items-center gap-2 mb-2.5 sm:mb-4">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
-                  <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-[0.16em] uppercase text-[#D4AF37]">
-                    FOR DIGITAL AGENCIES
-                  </span>
-                </div>
-                
-                <h3 className="text-base sm:text-lg lg:text-xl font-display font-medium text-[#FAF8F5] tracking-tight mb-2 sm:mb-2.5 leading-snug">
-                  White-Label Development Partner
-                </h3>
-
-                <p className="text-[13px] sm:text-[13.5px] md:text-sm text-[#FAF8F5]/70 leading-relaxed font-normal mb-4 sm:mb-6">
-                  Need a dependable white-label development partner for overflow work or ongoing support?
-                </p>
-              </div>
-
-              <div className="pt-3.5 sm:pt-4 border-t border-white/10">
-                <Link 
-                  to="/contact?inquiry=agency"
-                  className="inline-flex items-center gap-2 text-[11.5px] sm:text-xs md:text-[12.5px] font-semibold tracking-wider text-[#FAF8F5] group-hover/card:text-[#D4AF37] transition-colors uppercase"
-                >
-                  <span>Discuss a Partnership</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-[#D4AF37] transition-transform duration-300 group-hover/card:translate-x-1" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Card 2: For Businesses & Founders */}
-            <div className="group/card relative rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-8 bg-gradient-to-b from-white/[0.045] to-white/[0.015] border border-white/10 hover:border-[#D4AF37]/45 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between backdrop-blur-sm">
-              <div>
-                <div className="flex items-center gap-2 mb-2.5 sm:mb-4">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
-                  <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-[0.16em] uppercase text-[#D4AF37]">
-                    FOR BUSINESSES & FOUNDERS
-                  </span>
-                </div>
-                
-                <h3 className="text-base sm:text-lg lg:text-xl font-display font-medium text-[#FAF8F5] tracking-tight mb-2 sm:mb-2.5 leading-snug">
-                  Direct Digital Project Delivery
-                </h3>
-
-                <p className="text-[13px] sm:text-[13.5px] md:text-sm text-[#FAF8F5]/70 leading-relaxed font-normal mb-4 sm:mb-6">
-                  Have a website, eCommerce project, or custom digital product that needs to be built properly?
-                </p>
-              </div>
-
-              <div className="pt-3.5 sm:pt-4 border-t border-white/10">
-                <Link 
-                  to="/contact?inquiry=project"
-                  className="inline-flex items-center gap-2 text-[11.5px] sm:text-xs md:text-[12.5px] font-semibold tracking-wider text-[#FAF8F5] group-hover/card:text-[#D4AF37] transition-colors uppercase"
-                >
-                  <span>Discuss Your Project</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-[#D4AF37] transition-transform duration-300 group-hover/card:translate-x-1" />
-                </Link>
-              </div>
-            </div>
+            <Link 
+              to="/contact" 
+              className="w-full sm:w-auto inline-flex items-center justify-center px-7 sm:px-9 py-3.5 sm:py-4 text-xs sm:text-[13px] font-semibold tracking-wider uppercase text-[#FAF8F5] bg-white/[0.04] border border-white/15 rounded-full hover:bg-white/[0.08] hover:border-[#D4AF37]/50 transition-all duration-300 hover:-translate-y-0.5 group"
+            >
+              <span>Start a Conversation</span>
+              <ArrowRight className="ml-2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D4AF37] transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
           </motion.div>
 
           {/* Understated Personal Brand Closing Detail */}
           <motion.div 
             variants={itemVariants}
-            className="w-full mt-8 sm:mt-12 md:mt-16 pt-5 sm:pt-7 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[9.5px] sm:text-[10.5px] md:text-[11.5px] font-mono tracking-[0.16em] sm:tracking-[0.18em] text-[#FAF8F5]/45 uppercase text-center sm:text-left gap-2 sm:gap-4"
+            className="w-full mt-12 sm:mt-16 md:mt-20 pt-6 sm:pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[10px] sm:text-[11px] md:text-[11.5px] font-mono tracking-[0.16em] sm:tracking-[0.18em] text-[#FAF8F5]/45 uppercase text-center sm:text-left gap-2 sm:gap-4"
           >
             <span>DIRECT COMMUNICATION • CLEAR DELIVERY • BUILT TO LAST</span>
-            <span className="text-[#FAF8F5]/30">SAYED AHMAD • WEB DEVELOPMENT PARTNER</span>
+            <span className="text-[#FAF8F5]/35">SAYED AHMAD • WEB DEVELOPMENT PARTNER</span>
           </motion.div>
         </motion.div>
       </div>

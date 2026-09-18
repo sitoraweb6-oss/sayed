@@ -10,9 +10,45 @@
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     
+    <link rel="canonical" href="https://sitora.org/" />
+
+    <!-- Performance: Preconnect & Asynchronous Non-Blocking Google Fonts Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+    </noscript>
+
+    <!-- Structured Data (JSON-LD) for Search Engine Optimization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://sitora.org/#person",
+          "name": "Sayed Ahmad",
+          "jobTitle": "Web Development Partner",
+          "url": "https://sitora.org",
+          "sameAs": [
+            "https://www.linkedin.com/in/sayedahmad-/"
+          ],
+          "email": "hello@sitora.org"
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://sitora.org/#service",
+          "name": "Sayed Ahmad — Web Development Partner",
+          "url": "https://sitora.org",
+          "founder": { "@id": "https://sitora.org/#person" },
+          "areaServed": "Worldwide",
+          "description": "Business-focused web development, custom WordPress & WooCommerce, responsive modern web applications, and white-label engineering partner for agencies and growing brands."
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
