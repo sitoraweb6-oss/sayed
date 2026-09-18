@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="100%" height="100%">
+  <g transform="translate(10, 14)">
+    <!-- Globe sphere with ribbons -->
+    <g transform="translate(6, 0)">
+      <circle cx="24" cy="24" r="22" fill="#0284C7" />
+      <path d="M4 18 Q24 28 44 18 Q24 8 4 18 Z" fill="#10B981" />
+      <path d="M4 30 Q24 40 44 30 Q24 20 4 30 Z" fill="#34D399" />
+      <ellipse cx="24" cy="24" rx="10" ry="22" fill="none" stroke="#FFFFFF" stroke-width="1.8" opacity="0.6" />
+      <ellipse cx="24" cy="24" rx="22" ry="10" fill="none" stroke="#FFFFFF" stroke-width="1.8" opacity="0.6" />
+    </g>
+    
+    <!-- Text -->
+    <text x="64" y="16" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="16" fill="#0F172A">Global</text>
+    <text x="64" y="31" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="15" fill="#0284C7">Science</text>
+    <text x="64" y="46" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="15" fill="#0F172A">Circle</text>
+  </g>
+</svg>

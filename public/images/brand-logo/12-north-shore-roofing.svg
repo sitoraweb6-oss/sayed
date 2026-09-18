@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="100%" height="100%">
+  <g transform="translate(10, 10)">
+    <!-- 3 Roof Gables Icon -->
+    <g transform="translate(48, 0)">
+      <path d="M12 18 L26 4 L40 18 Z" fill="none" stroke="#1E3A8A" stroke-width="3" stroke-linejoin="round" />
+      <path d="M36 18 L50 4 L64 18 Z" fill="none" stroke="#1E3A8A" stroke-width="3" stroke-linejoin="round" />
+      <path d="M24 14 L38 0 L52 14 Z" fill="none" stroke="#0284C7" stroke-width="3.5" stroke-linejoin="round" />
+    </g>
+    
+    <!-- Text -->
+    <text x="100" y="38" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="16" fill="#1E3A8A" letter-spacing="0.5">North Shore</text>
+    <text x="100" y="52" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="10" fill="#0284C7" letter-spacing="3.5">ROOFING</text>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="100%" height="100%">
+  <g transform="translate(10, 10)">
+    <!-- Golden Lotus Petals Icon -->
+    <path d="M85 2 C85 2 73 14 73 24 C73 30 78 35 85 35 C92 35 97 30 97 24 C97 14 85 2 85 2 Z" fill="none" stroke="#B8860B" stroke-width="2.5" />
+    <path d="M72 16 C63 20 60 26 62 31 C64 36 71 36 76 33 C81 30 83 25 83 25" fill="none" stroke="#B8860B" stroke-width="2" />
+    <path d="M98 16 C107 20 110 26 108 31 C106 36 99 36 94 33 C89 30 87 25 87 25" fill="none" stroke="#B8860B" stroke-width="2" />
+    
+    <!-- Tanowra Text -->
+    <text x="90" y="54" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="24" fill="#8A6208" letter-spacing="1">Tanowra</text>
+  </g>
+</svg>

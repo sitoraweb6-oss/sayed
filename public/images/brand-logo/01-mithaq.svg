@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="100%" height="100%">
+  <g transform="translate(15, 12)">
+    <!-- 3 Angled Stripes Icon -->
+    <path d="M12 4 L2 42 Q1 46 5 46 L13 46 Q16 46 18 42 L28 4 Q29 0 25 0 L17 0 Q14 0 12 4 Z" fill="#2563EB" />
+    <path d="M28 4 L18 42 Q17 46 21 46 L29 46 Q32 46 34 42 L44 4 Q45 0 41 0 L33 0 Q30 0 28 4 Z" fill="#3B82F6" />
+    <path d="M44 4 L34 42 Q33 46 37 46 L45 46 Q48 46 50 42 L60 4 Q61 0 57 0 L49 0 Q46 0 44 4 Z" fill="#60A5FA" />
+    
+    <!-- MITHAQ Text -->
+    <text x="70" y="34" font-family="system-ui, -apple-system, 'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="23" fill="#0B132B" letter-spacing="2">MITHAQ</text>
+  </g>
+</svg>
