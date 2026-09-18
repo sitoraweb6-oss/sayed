@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import initialManifest from '../../data/brandLogosManifest.json';
 
-// Guaranteed fallback list of all 18 brand logos embedded directly into the JS bundle
+// Guaranteed static list of all 18 brand logos pre-bundled directly into the JS bundle
 const DEFAULT_BRAND_LOGOS: string[] = [
   '/images/brand-logo/01-mithaq.svg',
   '/images/brand-logo/02-tanowra.svg',
@@ -25,7 +25,7 @@ const DEFAULT_BRAND_LOGOS: string[] = [
 
 /**
  * Normalizes asset paths for production, ensuring compatibility with
- * root domains, base URL subpaths, CDNs, and preview environments.
+ * root domains, base URL subpaths, CDNs, Vercel, and preview environments.
  */
 export function resolveLogoUrl(rawPath: string): string {
   if (!rawPath) return '';
@@ -128,7 +128,7 @@ export default function BrandLogoMarquee() {
     return DEFAULT_BRAND_LOGOS;
   });
 
-  // Dynamically sync with backend endpoint to auto-discover any new images in real-time
+  // Dynamically sync with backend endpoint when available (optional enhancement)
   useEffect(() => {
     let isMounted = true;
     fetch('/api/brand-logos')
@@ -146,7 +146,7 @@ export default function BrandLogoMarquee() {
         }
       })
       .catch(() => {
-        // Retain current bundled logos seamlessly
+        // Retain bundled logos
       });
 
     return () => {
@@ -198,14 +198,18 @@ export default function BrandLogoMarquee() {
         </p>
       </div>
 
-      {/* Continuous Dual-Row Horizontal Marquee Container */}
-      <div 
-        className="relative w-full overflow-hidden flex flex-col gap-3.5 sm:gap-4 md:gap-5 marquee-track"
-        style={{
-          maskImage: 'linear-gradient(to right, transparent, black 6%, black 94%, transparent)',
-          WebkitMaskImage: 'linear-gradient(to right, transparent, black 6%, black 94%, transparent)',
-        }}
-      >
+      {/* Continuous Dual-Row Horizontal Marquee Container with Dual Mask & Edge Gradient Overlays */}
+      <div className="relative w-full overflow-hidden flex flex-col gap-3.5 sm:gap-4 md:gap-5 marquee-track">
+        {/* Universal Edge Gradient Overlays to guarantee edge fading in all browsers */}
+        <div 
+          className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-20 md:w-28 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/80 to-transparent z-20" 
+          aria-hidden="true"
+        />
+        <div 
+          className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-20 md:w-28 bg-gradient-to-l from-[#FAF8F5] via-[#FAF8F5]/80 to-transparent z-20" 
+          aria-hidden="true"
+        />
+
         {/* ROW 1: Right to Left (RTL) */}
         <div className="relative flex overflow-hidden w-full select-none">
           <div className="flex whitespace-nowrap items-center py-1 sm:py-1.5 animate-marquee-rtl will-change-transform">
