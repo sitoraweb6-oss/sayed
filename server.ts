@@ -2,7 +2,6 @@ import express, { Request, Response } from "express";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import { generateEmailHtml, generateEmailText, ContactEmailPayload } from "./server/emailTemplate";
-import { getDiscoveredBrandLogos } from "./server/brandLogos";
 
 const app = express();
 const PORT = 3000;
@@ -42,11 +41,6 @@ app.get("/api/health", (_req: Request, res: Response) => {
     receiver: process.env.CONTACT_RECEIVER_EMAIL || "hello@sitora.org",
     from: process.env.CONTACT_FROM_EMAIL || "Sayed Ahmad Website <hello@sitora.org>",
   });
-});
-
-app.get("/api/brand-logos", (_req: Request, res: Response) => {
-  const logos = getDiscoveredBrandLogos();
-  res.json(logos);
 });
 
 app.post("/api/contact", async (req: Request, res: Response) => {

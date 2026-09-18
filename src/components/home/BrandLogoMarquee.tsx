@@ -1,27 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import initialManifest from '../../data/brandLogosManifest.json';
-
-// Guaranteed static list of all 18 brand logos pre-bundled directly into the JS bundle
-const DEFAULT_BRAND_LOGOS: string[] = [
-  '/images/brand-logo/01-mithaq.svg',
-  '/images/brand-logo/02-tanowra.svg',
-  '/images/brand-logo/03-haya-fashion.svg',
-  '/images/brand-logo/04-continental-health.svg',
-  '/images/brand-logo/05-brac.svg',
-  '/images/brand-logo/06-mahnur-hijab.svg',
-  '/images/brand-logo/07-ocean-international.svg',
-  '/images/brand-logo/08-glamtouch.svg',
-  '/images/brand-logo/09-style-decor.svg',
-  '/images/brand-logo/10-jothsna-elearning.svg',
-  '/images/brand-logo/11-global-science-circle.svg',
-  '/images/brand-logo/12-north-shore-roofing.svg',
-  '/images/brand-logo/13-continental-auto-services.svg',
-  '/images/brand-logo/14-inaya-abaya.svg',
-  '/images/brand-logo/15-tazbeed.svg',
-  '/images/brand-logo/16-al-ishaq-academy.svg',
-  '/images/brand-logo/17-evaglow.svg',
-  '/images/brand-logo/18-al-nisbah.svg',
-];
+import React, { useState, useMemo } from 'react';
+import { brandLogos } from '../../data/brandLogos';
 
 /**
  * Normalizes asset paths for production, ensuring compatibility with
@@ -120,55 +98,18 @@ function LogoCard({ src, ariaHidden }: LogoCardProps) {
 }
 
 export default function BrandLogoMarquee() {
-  // Initialize with manifest data, falling back to guaranteed static array
-  const [logos, setLogos] = useState<string[]>(() => {
-    if (Array.isArray(initialManifest) && initialManifest.length > 0) {
-      return initialManifest as string[];
-    }
-    return DEFAULT_BRAND_LOGOS;
-  });
-
-  // Dynamically sync with backend endpoint when available (optional enhancement)
-  useEffect(() => {
-    let isMounted = true;
-    fetch('/api/brand-logos')
-      .then((res) => {
-        if (!res.ok) return null;
-        const contentType = res.headers.get('content-type');
-        if (contentType && contentType.includes('application/json')) {
-          return res.json();
-        }
-        return null;
-      })
-      .then((data) => {
-        if (isMounted && Array.isArray(data) && data.length > 0) {
-          setLogos(data);
-        }
-      })
-      .catch(() => {
-        // Retain bundled logos
-      });
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
-
-  const activeLogos = useMemo(() => {
-    return logos.length > 0 ? logos : DEFAULT_BRAND_LOGOS;
-  }, [logos]);
-
   // Divide logos cleanly into two balanced, distinct rows
   const { row1Logos, row2Logos } = useMemo(() => {
-    if (activeLogos.length === 1) {
-      return { row1Logos: activeLogos, row2Logos: activeLogos };
+    const list = brandLogos && brandLogos.length > 0 ? brandLogos : [];
+    if (list.length <= 1) {
+      return { row1Logos: list, row2Logos: list };
     }
-    const midpoint = Math.ceil(activeLogos.length / 2);
+    const midpoint = Math.ceil(list.length / 2);
     return {
-      row1Logos: activeLogos.slice(0, midpoint),
-      row2Logos: activeLogos.slice(midpoint),
+      row1Logos: list.slice(0, midpoint),
+      row2Logos: list.slice(midpoint),
     };
-  }, [activeLogos]);
+  }, []);
 
   const track1 = useMemo(() => createSeamlessTrack(row1Logos, 14), [row1Logos]);
   const track2 = useMemo(() => createSeamlessTrack(row2Logos, 14), [row2Logos]);
