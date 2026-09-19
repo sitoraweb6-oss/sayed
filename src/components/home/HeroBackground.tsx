@@ -3,7 +3,7 @@ export default function HeroBackground() {
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
       {/* Bubble 1: Large Soft Slate/Periwinkle Circle (Top Right) */}
       <div 
-        className="absolute top-[8%] sm:top-[12%] right-[-5%] sm:right-[4%] lg:right-[8%] w-[240px] h-[240px] sm:w-[320px] sm:h-[320px] lg:w-[420px] lg:h-[420px] rounded-full bg-[#DCE7F5]/90 blur-[1px] md:blur-[2px] opacity-90 animate-float-bubble-1"
+        className="absolute top-[8%] sm:top-[12%] right-[1%] sm:right-[6%] lg:right-[10%] w-[200px] h-[200px] sm:w-[225px] sm:h-[225px] lg:w-[295px] lg:h-[295px] rounded-full bg-[#DCE7F5]/90 blur-[1px] md:blur-[2px] opacity-90 animate-float-bubble-1"
       />
 
       {/* Bubble 2: Small Warm Amber/Gold Circle (Middle Right) */}

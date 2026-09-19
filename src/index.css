@@ -34,6 +34,17 @@
   --color-accent-soft: rgba(212, 175, 55, 0.12);
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   background-color: var(--color-brand-bg);
   color: var(--color-brand-text);
