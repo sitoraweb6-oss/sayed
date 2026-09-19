@@ -13,8 +13,8 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Sayed Ahmad | WordPress & WooCommerce Developer | Web Development Partner</title>
-        <meta name="description" content="Sayed Ahmad helps agencies, businesses, and growing brands build reliable WordPress, WooCommerce, and custom digital solutions focused on real business goals." />
+        <title>Sayed Ahmad | WordPress, WooCommerce & Web Development Partner</title>
+        <meta name="description" content="Senior WordPress & WooCommerce specialist and web development partner. Building high-performance, conversion-focused websites and digital solutions for growing brands and agencies." />
       </Helmet>
       
       <div className="flex flex-col">

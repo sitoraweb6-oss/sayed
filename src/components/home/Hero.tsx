@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import HeroBackground from './HeroBackground';
 
 const rotatingPhrases = [
-  "PERFORM", 
-  "CONVERT", 
-  "SCALE", 
-  "DELIVER"
+  "DELIVER",
+  "CONVERT",
+  "SCALE"
 ];
 
 export default function Hero() {
@@ -17,56 +15,52 @@ export default function Hero() {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % rotatingPhrases.length);
-    }, 4500);
+    }, 3800);
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <section className="relative min-h-[100dvh] flex flex-col justify-center items-center pt-24 pb-12 overflow-hidden isolate">
+    <section className="relative min-h-[92dvh] flex flex-col justify-center items-center pt-24 sm:pt-28 pb-16 overflow-hidden isolate bg-white">
       
-      {/* Soft Glassy Atmospheric Orbs */}
+      {/* Three Soft Floating Atmospheric Bubbles on Right Side */}
       <HeroBackground />
 
-      <div className="max-w-4xl mx-auto px-6 lg:px-8 relative z-10 w-full flex flex-col items-center text-center mt-6 md:mt-12">
+      <div className="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10 w-full flex flex-col items-center text-center mt-3 md:mt-8">
         
-        {/* Highlighted Eyebrow Badge */}
+        {/* Top Eyebrow Status */}
         <motion.div 
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-8 md:mb-10 inline-flex items-center justify-center gap-2.5 px-4 sm:px-5 py-2 rounded-full bg-white/90 backdrop-blur-md border border-[#D4AF37]/40 shadow-[0_2px_16px_rgba(212,175,55,0.18)] hover:border-[#D4AF37]/70 transition-all duration-300"
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mb-4 sm:mb-6 text-[#456E9E] italic text-xs sm:text-sm md:text-base font-serif flex items-center justify-center gap-1.5"
         >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-          </span>
-          <span className="text-[11.5px] sm:text-xs font-semibold tracking-[0.14em] uppercase text-[#0B132B]">
-            Available for selected projects
-          </span>
+          <span className="text-xs">•</span>
+          <span>Available for selected projects</span>
         </motion.div>
         
-        {/* Headline */}
+        {/* Condensed Ultra-Tall Display Headline (3 Lines) */}
         <motion.h1 
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-          className="font-display font-bold text-[14vw] sm:text-[6rem] md:text-[7.5rem] lg:text-[8.5rem] leading-[0.95] md:leading-[0.9] tracking-wide text-brand-text uppercase flex flex-col items-center w-full"
+          transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+          className="font-display font-bold tracking-tight text-[10vw] xs:text-[2.6rem] sm:text-5xl md:text-6xl lg:text-[4.75rem] xl:text-[5.25rem] leading-[0.92] sm:leading-[0.9] uppercase flex flex-col items-center w-full select-none"
         >
-          <span className="block">I BUILD</span>
-          <span className="block">DIGITAL</span>
-          <span className="block">EXPERIENCES</span>
-          <div className="flex flex-row items-center justify-center gap-3 md:gap-5 mt-2 md:mt-3 w-full">
-            <span>THAT</span>
-            {/* The inline-grid ensures the container fits the widest word without layout shifts */}
-            <span className="inline-grid relative items-center justify-items-center text-brand-accent">
-              <span className="invisible col-start-1 row-start-1 pointer-events-none select-none">DELIVER</span>
+          <span className="block text-[#143564] whitespace-nowrap">I BUILD DIGITAL</span>
+          <span className="block text-[#143564] mt-0.5 sm:mt-1 whitespace-nowrap">EXPERIENCES</span>
+          
+          <div className="flex items-center justify-center gap-2 sm:gap-3.5 mt-1 sm:mt-2 w-full whitespace-nowrap">
+            <span className="text-[#143564]">THAT</span>
+            <span className="inline-grid relative items-center justify-items-center text-[#5581B8]">
+              <span className="invisible col-start-1 row-start-1 pointer-events-none select-none">
+                DELIVER
+              </span>
               <AnimatePresence mode="popLayout">
                 <motion.span
                   key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -30 }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  initial={{ opacity: 0, y: 18, filter: "blur(2px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, y: -18, filter: "blur(2px)" }}
+                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                   className="col-start-1 row-start-1 whitespace-nowrap"
                 >
                   {rotatingPhrases[index]}
@@ -76,50 +70,55 @@ export default function Hero() {
           </div>
         </motion.h1>
         
-        {/* Role Label */}
+        {/* Specialty Tag below Headline and above Description */}
         <motion.div 
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="mt-8 md:mt-12 mb-6"
+          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+          className="mt-6 sm:mt-7 mb-2 sm:mb-3"
         >
-           <span className="inline-block text-[0.65rem] md:text-[0.7rem] font-bold tracking-[0.25em] text-[#0B132B] uppercase bg-[#0B132B]/5 px-4 py-2 rounded-full border border-[#0B132B]/10">
-             WORDPRESS & WOOCOMMERCE SPECIALIST
-           </span>
+          <span className="inline-block text-[10px] xs:text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-[#143564] bg-[#143564]/5 px-3.5 sm:px-4 py-1.5 rounded-full border border-[#143564]/10">
+            WordPress & WooCommerce Specialist
+          </span>
         </motion.div>
         
-        {/* Description */}
+        {/* Supporting Description */}
         <motion.p 
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="text-sm md:text-[1.05rem] text-brand-muted max-w-[320px] md:max-w-[480px] mx-auto mb-10 md:mb-12 leading-relaxed font-medium"
+          transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
+          className="text-sm sm:text-base md:text-[1.05rem] text-[#1E3A68]/85 max-w-[340px] sm:max-w-lg md:max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed font-normal"
         >
-          I help agencies and businesses turn designs, ideas, and complex requirements into reliable, production-ready digital experiences.
+          I help agencies and businesses turn designs, ideas, and complex requirements into reliable, production-ready websites and digital solutions.
         </motion.p>
         
-        {/* CTAs: Clean, editorial, single primary with understated secondary */}
+        {/* CTA Buttons: Polished Single-Line Mobile Experience */}
         <motion.div 
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="flex flex-col items-center w-full"
+          transition={{ duration: 0.7, delay: 0.35, ease: "easeOut" }}
+          className="w-full flex justify-center"
         >
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 w-full sm:w-auto">
-            <Link 
-              to="/#selected-work" 
-              className="w-full sm:w-auto inline-flex items-center justify-center px-8 sm:px-9 py-3.5 sm:py-4 text-[0.75rem] md:text-[0.8rem] font-bold tracking-[0.18em] uppercase text-white bg-brand-text rounded-full hover:bg-opacity-90 transition-all duration-300 group shadow-sm hover:shadow-md hover:-translate-y-0.5"
-            >
-              <span>View My Work</span>
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            
+          <div className="flex flex-row items-center justify-center gap-2.5 sm:gap-4.5 w-full max-w-lg sm:max-w-none sm:w-auto px-1">
+            {/* Primary Navy Pill with Avatar */}
             <Link 
               to="/contact" 
-              className="w-full sm:w-auto inline-flex items-center justify-center px-8 sm:px-9 py-3.5 sm:py-4 text-[0.75rem] md:text-[0.8rem] font-extrabold tracking-[0.18em] uppercase text-brand-text bg-[#FAF8F5] border-2 border-brand-text/15 hover:border-brand-text hover:bg-brand-text hover:text-white rounded-full transition-all duration-300 group shadow-sm hover:shadow-lg hover:-translate-y-0.5 active:scale-98"
+              className="inline-flex items-center justify-center pl-2 sm:pl-2.5 pr-3.5 sm:pr-6 py-2.5 sm:py-3 text-[11px] xs:text-xs sm:text-sm font-bold sm:font-semibold text-white bg-[#16345F] hover:bg-[#11284A] rounded-full shadow-[0_10px_25px_-5px_rgba(22,52,95,0.38)] hover:shadow-[0_14px_28px_-4px_rgba(22,52,95,0.48)] hover:-translate-y-0.5 active:scale-95 transition-all duration-300 group whitespace-nowrap"
             >
-              <span>LET'S WORK TOGETHER</span>
-              <ArrowRight className="ml-2 w-4 h-4 text-brand-accent group-hover:text-white group-hover:translate-x-1 transition-all" />
+              <img 
+                src="/images/profile/founder.webp" 
+                alt="Sayed Ahmad" 
+                className="w-5 h-5 sm:w-7 sm:h-7 rounded-full object-cover border border-white/90 mr-1.5 sm:mr-2.5 flex-shrink-0"
+              />
+              <span>LET'S WORK TOGETHER &rarr;</span>
+            </Link>
+            
+            {/* Secondary Clean Outline Pill */}
+            <Link 
+              to="/work" 
+              className="inline-flex items-center justify-center px-3.5 sm:px-6 py-2.5 sm:py-3 text-[11px] xs:text-xs sm:text-sm font-bold sm:font-semibold text-[#16345F] bg-white border-[1.6px] border-[#16345F] hover:bg-[#16345F] hover:text-white rounded-full hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all duration-300 group whitespace-nowrap"
+            >
+              <span>VIEW MY WORK &rarr;</span>
             </Link>
           </div>
         </motion.div>
@@ -128,3 +127,4 @@ export default function Hero() {
     </section>
   );
 }
+

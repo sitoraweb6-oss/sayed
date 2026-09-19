@@ -79,10 +79,10 @@ export default function PersonalBrandLogo({
           onError={() => setHasError(true)}
           loading="eager"
           referrerPolicy="no-referrer"
-          className="w-full h-full rounded-full object-cover border-2 border-[#D4AF37] shadow-sm ring-1 ring-[#D4AF37]/30 group-hover:ring-[#D4AF37]/60 group-hover:shadow-md transition-all duration-300 ease-out"
+          className="w-full h-full rounded-full object-cover border-2 border-[#143564] shadow-sm ring-1 ring-[#143564]/30 group-hover:ring-[#143564]/70 group-hover:shadow-md transition-all duration-300 ease-out"
         />
       ) : (
-        <div className="w-full h-full rounded-full bg-[#0B132B] border-2 border-[#D4AF37] flex items-center justify-center text-[#D4AF37] font-bold text-xs shadow-sm group-hover:ring-1 group-hover:ring-[#D4AF37]/50 transition-all duration-300">
+        <div className="w-full h-full rounded-full bg-[#143564] border-2 border-[#143564] flex items-center justify-center text-white font-bold text-xs shadow-sm group-hover:ring-1 group-hover:ring-[#143564]/80 transition-all duration-300">
           {PERSONAL_BRAND.initial}
         </div>
       )}
