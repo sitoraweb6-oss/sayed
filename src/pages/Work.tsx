@@ -132,8 +132,19 @@ export default function Work() {
   return (
     <>
       <Helmet>
-        <title>Selected Work | Sayed Ahmad</title>
+        <title>Selected Work | Sayed Ahmad — Web Developer & Digital Solutions Partner</title>
         <meta name="description" content="Explore selected websites, e-commerce stores, custom web applications, and interactive digital experiences designed and developed by Sayed Ahmad." />
+        <link rel="canonical" href="https://www.sitora.org/work" />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Selected Work | Sayed Ahmad — Web Developer & Digital Solutions Partner" />
+        <meta property="og:description" content="Explore selected websites, e-commerce stores, custom web applications, and interactive digital experiences designed and developed by Sayed Ahmad." />
+        <meta property="og:url" content="https://www.sitora.org/work" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.sitora.org/images/founder-story/founder.webp" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Selected Work | Sayed Ahmad — Web Developer & Digital Solutions Partner" />
+        <meta name="twitter:description" content="Explore selected websites, e-commerce stores, custom web applications, and interactive digital experiences designed and developed by Sayed Ahmad." />
+        <meta name="twitter:image" content="https://www.sitora.org/images/founder-story/founder.webp" />
       </Helmet>
       
       <main className="min-h-screen bg-[#FCFBFA] pt-32 pb-24 isolate">

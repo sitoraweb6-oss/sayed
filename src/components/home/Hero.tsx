@@ -29,8 +29,8 @@ export default function Hero() {
         
         {/* Top Eyebrow Status */}
         <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ y: 10 }}
+          animate={{ y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mb-4 sm:mb-6 text-[#456E9E] italic text-xs sm:text-sm md:text-base font-serif flex items-center justify-center gap-1.5"
         >
@@ -38,11 +38,11 @@ export default function Hero() {
           <span>Available for selected projects</span>
         </motion.div>
         
-        {/* Condensed Ultra-Tall Display Headline (3 Lines) */}
+        {/* Condensed Ultra-Tall Display Headline (3 Lines) - LCP optimized */}
         <motion.h1 
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+          initial={{ y: 18 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.7, delay: 0.05, ease: "easeOut" }}
           className="font-display font-bold tracking-tight text-[10vw] xs:text-[2.6rem] sm:text-5xl md:text-6xl lg:text-[4.75rem] xl:text-[5.25rem] leading-[0.92] sm:leading-[0.9] uppercase flex flex-col items-center w-full select-none"
         >
           <span className="block text-[#143564] whitespace-nowrap">I BUILD DIGITAL</span>
@@ -54,7 +54,7 @@ export default function Hero() {
               <span className="invisible col-start-1 row-start-1 pointer-events-none select-none">
                 DELIVER
               </span>
-              <AnimatePresence mode="popLayout">
+              <AnimatePresence mode="popLayout" initial={false}>
                 <motion.span
                   key={index}
                   initial={{ opacity: 0, y: 18, filter: "blur(2px)" }}
@@ -72,9 +72,9 @@ export default function Hero() {
         
         {/* Specialty Tag below Headline and above Description */}
         <motion.div 
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+          initial={{ y: 12 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
           className="mt-6 sm:mt-7 mb-2 sm:mb-3"
         >
           <span className="inline-block text-[10px] xs:text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-[#143564] bg-[#143564]/5 px-3.5 sm:px-4 py-1.5 rounded-full border border-[#143564]/10">
@@ -84,9 +84,9 @@ export default function Hero() {
         
         {/* Supporting Description */}
         <motion.p 
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
+          initial={{ y: 15 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
           className="text-sm sm:text-base md:text-[1.05rem] text-[#1E3A68]/85 max-w-[340px] sm:max-w-lg md:max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed font-normal"
         >
           I help businesses turn their identity into high-performing websites that build trust, generate more leads and sales, and create real business value.
@@ -94,9 +94,9 @@ export default function Hero() {
         
         {/* CTA Buttons: Polished Single-Line Mobile Experience */}
         <motion.div 
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.35, ease: "easeOut" }}
+          initial={{ y: 15 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
           className="w-full flex justify-center"
         >
           <div className="flex flex-row items-center justify-center gap-2.5 sm:gap-4.5 w-full max-w-lg sm:max-w-none sm:w-auto px-1">
@@ -108,6 +108,9 @@ export default function Hero() {
               <img 
                 src="/images/profile/founder.webp" 
                 alt="Sayed Ahmad" 
+                width={28}
+                height={28}
+                decoding="async"
                 className="w-5 h-5 sm:w-7 sm:h-7 rounded-full object-cover border border-white/90 mr-1.5 sm:mr-2.5 flex-shrink-0"
               />
               <span>LET'S WORK TOGETHER &rarr;</span>

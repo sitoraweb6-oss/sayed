@@ -21,11 +21,20 @@ export default function About() {
           name="description" 
           content="Read Sayed Ahmad’s journey from marketing to web development, AI-assisted digital solutions, WordPress, WooCommerce, and building purposeful websites for real businesses." 
         />
+        <link rel="canonical" href="https://www.sitora.org/about" />
+        <meta name="robots" content="index, follow" />
         <meta property="og:title" content="About Sayed Ahmad — Founder Story & Web Development Journey" />
         <meta 
           property="og:description" 
           content="Read Sayed Ahmad’s journey from marketing to web development, AI-assisted digital solutions, WordPress, WooCommerce, and building purposeful websites for real businesses." 
         />
+        <meta property="og:url" content="https://www.sitora.org/about" />
+        <meta property="og:type" content="profile" />
+        <meta property="og:image" content="https://www.sitora.org/images/founder-story/founder.webp" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Sayed Ahmad — Founder Story & Web Development Journey" />
+        <meta name="twitter:description" content="Read Sayed Ahmad’s journey from marketing to web development, AI-assisted digital solutions, WordPress, WooCommerce, and building purposeful websites for real businesses." />
+        <meta name="twitter:image" content="https://www.sitora.org/images/founder-story/founder.webp" />
       </Helmet>
 
       <div className="bg-stone-50 min-h-screen text-stone-800">

@@ -149,7 +149,18 @@ export default function Contact() {
     <>
       <Helmet>
         <title>Contact & 1:1 Consultation | Sayed Ahmad</title>
-        <meta name="description" content="Get in touch to discuss agency partnerships, business web development projects, or book a 1:1 consultation call." />
+        <meta name="description" content="Get in touch to discuss business web development projects, custom web solutions, eCommerce builds, or book a 1:1 consultation call." />
+        <link rel="canonical" href="https://www.sitora.org/contact" />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Contact & 1:1 Consultation | Sayed Ahmad" />
+        <meta property="og:description" content="Get in touch to discuss business web development projects, custom web solutions, eCommerce builds, or book a 1:1 consultation call." />
+        <meta property="og:url" content="https://www.sitora.org/contact" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.sitora.org/images/founder-story/founder.webp" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact & 1:1 Consultation | Sayed Ahmad" />
+        <meta name="twitter:description" content="Get in touch to discuss business web development projects, custom web solutions, eCommerce builds, or book a 1:1 consultation call." />
+        <meta name="twitter:image" content="https://www.sitora.org/images/founder-story/founder.webp" />
       </Helmet>
 
       <div className="pt-32 pb-24 bg-stone-50 min-h-screen">
@@ -176,7 +187,7 @@ export default function Contact() {
                 {/* Direct Contact Links */}
                 <div className="space-y-4 pt-2">
                   <a 
-                    href="mailto:sayed@sitora.org" 
+                    href={`mailto:${OFFICIAL_EMAIL}`} 
                     className="flex items-center text-stone-700 hover:text-stone-900 transition-colors group text-sm sm:text-base"
                   >
                     <div className="w-10 h-10 rounded-xl bg-white border border-stone-200 flex items-center justify-center mr-3.5 group-hover:border-stone-400 transition-colors shadow-2xs">
@@ -184,7 +195,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <div className="text-xs font-mono uppercase tracking-wider text-stone-400">Email Directly</div>
-                      <span className="font-medium text-stone-800 group-hover:text-stone-950 underline underline-offset-2">sayed@sitora.org</span>
+                      <span className="font-medium text-stone-800 group-hover:text-stone-950 underline underline-offset-2">{OFFICIAL_EMAIL}</span>
                     </div>
                   </a>
 

@@ -11,7 +11,7 @@ export default function AboutPreview() {
           <div className="lg:col-span-5">
             <LocalImage
               src="/images/founder-story/founder.webp"
-              alt="Sayed Ahmad - Founder & Web Development Partner"
+              alt="Sayed Ahmad — Founder of Sitora Web and Web Development Partner"
               aspectRatio="aspect-[4/5]"
               fallbackTitle="SAYED AHMAD"
               fallbackSubtitle="Founder & Web Development Partner"

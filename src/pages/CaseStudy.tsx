@@ -53,10 +53,19 @@ export default function CaseStudy() {
   return (
     <>
       <Helmet>
-        <title>{title} | Sayed Ahmad</title>
+        <title>{title} | Sayed Ahmad — Web Developer & Digital Solutions Partner</title>
         <meta name="description" content={shortDescription} />
+        <link rel="canonical" href={`https://www.sitora.org/work/${slug}`} />
+        <meta name="robots" content="index, follow" />
         <meta property="og:title" content={`${title} | Sayed Ahmad`} />
         <meta property="og:description" content={shortDescription} />
+        <meta property="og:url" content={`https://www.sitora.org/work/${slug}`} />
+        <meta property="og:type" content="article" />
+        {thumbnailImage && <meta property="og:image" content={thumbnailImage.startsWith('http') ? thumbnailImage : `https://www.sitora.org${thumbnailImage}`} />}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${title} | Sayed Ahmad`} />
+        <meta name="twitter:description" content={shortDescription} />
+        {thumbnailImage && <meta name="twitter:image" content={thumbnailImage.startsWith('http') ? thumbnailImage : `https://www.sitora.org${thumbnailImage}`} />}
       </Helmet>
 
       <article className="pt-24 pb-24 bg-stone-50">
