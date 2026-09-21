@@ -49,7 +49,7 @@ export default function PrivacyPolicy() {
               This Privacy Policy explains how <strong>Sayed Ahmad</strong> (operating under <strong>Sitora Web</strong>) collects, uses, and protects information when you visit this portfolio website or submit an inquiry.
             </p>
             <div className="mt-6 text-xs sm:text-sm font-mono text-stone-400">
-              Last Updated: March 2026
+              Last Updated: September 2026
             </div>
           </header>
 
@@ -63,7 +63,7 @@ export default function PrivacyPolicy() {
                 Introduction
               </h2>
               <p>
-                Welcome to the personal web development portfolio of <strong>Sayed Ahmad</strong>, founder of <strong>Sitora Web</strong>. I respect your privacy and am committed to maintaining complete transparency regarding how information is handled.
+                Welcome to the personal web development portfolio of <strong>Sayed Ahmad</strong>, founder of <strong>Sitora Web</strong>. I respect your privacy and aim to be transparent about how information is collected, used, and protected.
               </p>
               <p>
                 This portfolio is an informational showcase of selected web development projects, services, and technical capabilities. It is designed to be lean, straightforward, and privacy-respecting: there are no commercial user accounts, paywalls, advertising trackers, or unsolicited marketing newsletters.
@@ -85,32 +85,32 @@ export default function PrivacyPolicy() {
                 </h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-sm text-stone-600">
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-stone-400 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-stone-400 flex-shrink-0" aria-hidden="true" />
                     <span><strong>Full Name</strong></span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-stone-400 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-stone-400 flex-shrink-0" aria-hidden="true" />
                     <span><strong>Email Address</strong></span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-stone-400 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-stone-400 flex-shrink-0" aria-hidden="true" />
                     <span>Company or Organization <em>(optional)</em></span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-stone-400 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-stone-400 flex-shrink-0" aria-hidden="true" />
                     <span>Selected Service Interest</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-stone-400 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-stone-400 flex-shrink-0" aria-hidden="true" />
                     <span>Estimated Project Budget <em>(optional)</em></span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-stone-400 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-stone-400 flex-shrink-0" aria-hidden="true" />
                     <span>Target Delivery Timeline <em>(optional)</em></span>
                   </li>
                   <li className="flex items-start gap-2 sm:col-span-2">
-                    <CheckCircle2 className="w-4 h-4 text-stone-400 flex-shrink-0 mt-0.5" />
-                    <span>Project Details / Message message content</span>
+                    <CheckCircle2 className="w-4 h-4 text-stone-400 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                    <span>Project Details / Message</span>
                   </li>
                 </ul>
               </div>
@@ -155,7 +155,7 @@ export default function PrivacyPolicy() {
                     <span className="text-xs font-mono text-stone-400 uppercase">Infrastructure</span>
                   </div>
                   <p className="text-sm text-stone-600">
-                    When you submit the contact form, the data is processed securely through an authenticated server-side API integration using <strong>Resend</strong> to deliver your message to our private business inbox (<code className="text-xs bg-stone-100 px-1.5 py-0.5 rounded font-mono text-stone-800">hello@sitora.org</code>). Resend adheres to modern data protection standards.
+                    When you submit the contact form, the data is processed securely through an authenticated server-side API integration using <strong>Resend</strong> to deliver your message to our private business inbox (<code className="text-xs bg-stone-100 px-1.5 py-0.5 rounded font-mono text-stone-800">hello@sitora.org</code>). Resend is used as the email delivery provider for contact form submissions.
                   </p>
                 </div>
 
@@ -189,7 +189,7 @@ export default function PrivacyPolicy() {
                 Data Security
               </h2>
               <div className="flex items-start gap-3 bg-stone-50 border border-stone-200 rounded-xl p-4 sm:p-5">
-                <Lock className="w-5 h-5 text-stone-600 flex-shrink-0 mt-0.5" />
+                <Lock className="w-5 h-5 text-stone-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
                 <p className="text-sm text-stone-600 leading-relaxed">
                   We use industry-standard HTTPS encryption across all web traffic. Backend delivery credentials and API tokens are kept strictly server-side and are never exposed to the client browser. While no internet transmission can be guaranteed 100% impenetrable, we apply reasonable technical and organizational measures to safeguard your communications.
                 </p>
@@ -217,7 +217,7 @@ export default function PrivacyPolicy() {
                 Depending on your jurisdiction (such as GDPR in Europe or state privacy laws in the United States), you may have the right to request access to the personal data we hold about you, request corrections, or request deletion of our correspondence history.
               </p>
               <p>
-                To exercise any of these rights, please send an email to <a href="mailto:hello@sitora.org" className="text-stone-900 font-medium underline underline-offset-2 hover:text-stone-600">hello@sitora.org</a> with your request, and we will respond in a prompt manner.
+                To exercise any of these rights, please send an email to <a href="mailto:hello@sitora.org" className="text-stone-900 font-medium underline underline-offset-2 hover:text-stone-600">hello@sitora.org</a> with your request. We will review and respond to your request as required by applicable law.
               </p>
             </section>
 
@@ -244,14 +244,14 @@ export default function PrivacyPolicy() {
               <div className="bg-stone-100/80 border border-stone-200 rounded-2xl p-5 sm:p-6 mt-3 space-y-2">
                 <div className="text-base font-semibold text-stone-900">Sayed Ahmad &bull; Sitora Web</div>
                 <div className="text-sm text-stone-600 flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-stone-400" />
+                  <Mail className="w-4 h-4 text-stone-400" aria-hidden="true" />
                   <span>Email:</span>
                   <a href="mailto:hello@sitora.org" className="text-stone-900 font-medium underline underline-offset-2 hover:text-stone-600">
                     hello@sitora.org
                   </a>
                 </div>
                 <div className="text-sm text-stone-600 flex items-center gap-2 pt-1">
-                  <Calendar className="w-4 h-4 text-stone-400" />
+                  <Calendar className="w-4 h-4 text-stone-400" aria-hidden="true" />
                   <span>Consultations:</span>
                   <a 
                     href="https://cal.com/sayed-ahmad/project-consultation" 
@@ -260,7 +260,7 @@ export default function PrivacyPolicy() {
                     className="text-stone-900 font-medium inline-flex items-center gap-1 underline underline-offset-2 hover:text-stone-600"
                   >
                     cal.com/sayed-ahmad/project-consultation
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
                   </a>
                 </div>
               </div>

@@ -7,7 +7,7 @@ const strategicPillars = [
   { label: 'Customer Psychology', desc: 'Answering core questions before doubts emerge' },
   { label: 'Content Hierarchy', desc: 'Prioritizing essential messaging without visual clutter' },
   { label: 'Conversion Journeys', desc: 'Frictionless pathways toward inquiries and transactions' },
-  { label: 'Performance & Speed', desc: 'Sub-second loads that preserve visitor engagement' },
+  { label: 'Performance & Speed', desc: 'Fast loading that keeps visitors engaged' },
   { label: 'Mobile Usability', desc: 'Flawless execution on every screen dimension' },
   { label: 'Technical Reliability', desc: 'Clean, robust code built for long-term endurance' },
 ];

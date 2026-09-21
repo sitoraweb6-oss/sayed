@@ -17,6 +17,16 @@ export default function AboutPreview() {
               fallbackSubtitle="Founder & Web Development Partner"
               className="shadow-sm border border-stone-200"
             />
+
+            {/* Founder / Business Identity Info directly below image */}
+            <div className="mt-4 sm:mt-5 text-left">
+              <span className="block text-[11px] sm:text-[11.5px] font-mono font-bold tracking-wider uppercase text-stone-900 leading-tight">
+                FOUNDER, SITORA WEB
+              </span>
+              <span className="block text-[10px] sm:text-[10.5px] font-mono font-medium tracking-wide uppercase text-stone-500 mt-1 leading-tight">
+                DIGITAL SOLUTIONS FOR GROWING BUSINESSES
+              </span>
+            </div>
           </div>
 
           <div className="lg:col-span-7 flex flex-col items-start">

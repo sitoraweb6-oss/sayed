@@ -18,7 +18,7 @@ export default function Footer() {
               </h3>
             </Link>
             <p className="text-[13.5px] sm:text-sm text-stone-500 max-w-sm mb-4 sm:mb-6 leading-relaxed">
-              Business-focused web development for agencies, businesses, and growing brands.
+              Helping businesses build better websites, digital experiences, and custom web solutions.
             </p>
             <Link 
               to="/contact" 

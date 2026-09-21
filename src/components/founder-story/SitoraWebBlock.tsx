@@ -48,7 +48,7 @@ export default function SitoraWebBlock() {
               Sitora Web
             </h4>
             <p className="text-xs sm:text-[13px] font-mono text-[#FAF8F5]/65">
-              Purpose-built web solutions for businesses and agency partners.
+              Purpose-built web solutions for businesses, with selected support for digital agencies.
             </p>
           </div>
 

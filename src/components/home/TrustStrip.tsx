@@ -67,8 +67,8 @@ export default function TrustStrip() {
             <span className="text-[#D4AF37] text-[40px] lg:text-[4.75rem] leading-none font-display font-bold tracking-tight">
               <AnimatedNumber value={50} suffix="+" />
             </span>
-            <h3 className="text-[10px] lg:text-xs font-bold uppercase tracking-[0.15em] lg:tracking-[0.2em] text-[#0B132B] mt-2 mb-1">Websites Shipped</h3>
-            <p className="text-[10px] lg:text-sm text-[#0B132B]/60 font-medium leading-tight lg:leading-snug max-w-[260px]">More than websites—digital foundations for growing businesses.</p>
+            <h3 className="text-[10px] lg:text-xs font-bold uppercase tracking-[0.15em] lg:tracking-[0.2em] text-[#0B132B] mt-2 mb-1">Websites Delivered</h3>
+            <p className="text-[10px] lg:text-sm text-[#0B132B]/60 font-medium leading-tight lg:leading-snug max-w-[280px]">Business websites, eCommerce stores, and custom digital solutions.</p>
           </motion.div>
 
           {/* 4+ */}
@@ -80,7 +80,7 @@ export default function TrustStrip() {
               <AnimatedNumber value={4} suffix="+" />
             </span>
             <h3 className="text-[10px] lg:text-xs font-bold uppercase tracking-[0.15em] lg:tracking-[0.2em] text-[#0B132B] mt-2 mb-1">Countries Served</h3>
-            <p className="text-[10px] lg:text-sm text-[#0B132B]/60 font-medium leading-tight lg:leading-snug">Collaborating across different markets and business needs.</p>
+            <p className="text-[10px] lg:text-sm text-[#0B132B]/60 font-medium leading-tight lg:leading-snug">Working with businesses across different markets and industries.</p>
           </motion.div>
 
           {/* 3+ */}
@@ -92,7 +92,7 @@ export default function TrustStrip() {
               <AnimatedNumber value={3} suffix="+" />
             </span>
             <h3 className="text-[10px] lg:text-xs font-bold uppercase tracking-[0.15em] lg:tracking-[0.2em] text-[#0B132B] mt-2 mb-1">Years Building</h3>
-            <p className="text-[10px] lg:text-sm text-[#0B132B]/60 font-medium leading-tight lg:leading-snug">Focused on practical, scalable, and conversion-aware solutions.</p>
+            <p className="text-[10px] lg:text-sm text-[#0B132B]/60 font-medium leading-tight lg:leading-snug">Creating practical, scalable, and business-focused web solutions.</p>
           </motion.div>
 
           {/* Direct */}
@@ -102,7 +102,7 @@ export default function TrustStrip() {
           >
             <span className="text-[#0B132B] text-[24px] lg:text-[2.75rem] leading-none font-display font-bold tracking-tight uppercase">Direct</span>
             <h3 className="text-[10px] lg:text-xs font-bold uppercase tracking-[0.15em] lg:tracking-[0.2em] text-[#0B132B] mt-2 mb-1">Developer Partner</h3>
-            <p className="text-[10px] lg:text-sm text-[#0B132B]/60 font-medium leading-tight lg:leading-snug">One point of contact from implementation to delivery.</p>
+            <p className="text-[10px] lg:text-sm text-[#0B132B]/60 font-medium leading-tight lg:leading-snug">One point of contact from strategy to implementation and delivery.</p>
           </motion.div>
 
           {/* Decorative Spacer (Desktop only) */}

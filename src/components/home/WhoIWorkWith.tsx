@@ -8,6 +8,7 @@ interface ServiceCategory {
   id: string;
   category: string;
   title: string;
+  subtitle?: string;
   description: string;
   services: string[];
   cta: string;
@@ -17,68 +18,72 @@ interface ServiceCategory {
 
 const categories: ServiceCategory[] = [
   {
-    id: 'agencies',
-    category: 'FOR DIGITAL AGENCIES',
-    title: 'White-Label Development Partnerships',
-    description: 'I help agencies handle client projects with reliable white-label development, clean execution, and dependable communication—so they can focus on strategy, client relationships, and growth.',
+    id: 'business-websites',
+    category: '01 — BUSINESS WEBSITES',
+    title: 'Business Websites',
+    subtitle: 'Build a Strong Digital Presence',
+    description: 'From service businesses and local companies to eCommerce brands, I build modern websites that communicate your identity, build trust, and turn visitors into customers.',
     services: [
-      'Overflow project support',
-      'White-label WordPress development',
-      'WooCommerce projects',
-      'Figma implementation',
-      'Ongoing technical support'
+      'Business Websites & eCommerce',
+      'WordPress & WooCommerce',
+      'Lead-Focused Pages & UX',
+      'Responsive Design',
+      'Service & Local Business Sites'
     ],
-    cta: 'Partner With Me',
-    linkParam: 'agency',
+    cta: 'Build Your Website',
+    linkParam: 'business',
     theme: 'champagne'
   },
   {
-    id: 'established',
-    category: 'FOR ESTABLISHED BUSINESSES',
-    title: 'Direct Web Solutions',
-    description: 'I build professional websites, eCommerce platforms, and custom digital solutions that help businesses strengthen their online presence and serve customers better.',
+    id: 'custom-solutions',
+    category: '02 — CUSTOM WEB SOLUTIONS',
+    title: 'Custom Web Solutions',
+    subtitle: 'Turn Your Idea Into a Working Product',
+    description: 'Have a SaaS idea, MVP, business platform, or custom workflow in mind? I turn concepts and business requirements into functional web applications with the right structure, functionality, and connected data.',
     services: [
-      'Business websites',
-      'eCommerce platforms',
-      'Website redesign',
-      'Custom functionality',
-      'Performance improvements'
-    ],
-    cta: 'Discuss Your Project',
-    linkParam: 'business',
-    theme: 'cool'
-  },
-  {
-    id: 'small-business',
-    category: 'FOR SMALL BUSINESSES',
-    title: 'Professional Online Foundations',
-    description: 'I help small businesses establish a professional online presence that makes them easier to discover, trust, and contact.',
-    services: [
-      'Local business websites',
-      'Service business websites',
-      'Landing pages',
-      'Starter online stores',
-      'Digital presence setup'
-    ],
-    cta: 'Start Your Website',
-    linkParam: 'business',
-    theme: 'neutral'
-  },
-  {
-    id: 'founders',
-    category: 'FOR FOUNDERS & ORGANIZATIONS',
-    title: 'Custom Systems & MVPs',
-    description: 'I create custom digital solutions that connect data, simplify workflows, and turn complex business requirements into usable products.',
-    services: [
-      'MVP development',
-      'Dashboards',
-      'Authentication',
-      'Database-connected systems',
-      'Custom workflows'
+      'MVP Development & SaaS Concepts',
+      'Web Applications & Dashboards',
+      'Database-Connected Systems',
+      'API Integrations & Custom Workflows',
+      'Booking & Management Platforms'
     ],
     cta: 'Build Something Custom',
     linkParam: 'business',
     theme: 'graphite'
+  },
+  {
+    id: 'growing-businesses',
+    category: '03 — GROWING BUSINESSES',
+    title: 'Growing Businesses',
+    subtitle: 'Improve What You Already Have',
+    description: 'Already have a website but feel like it could do more? I help businesses modernize outdated websites, improve speed and usability, fix weak user experiences, and add the functionality they need to grow.',
+    services: [
+      'Website Redesign & Modernization',
+      'Performance Optimization',
+      'UX & Mobile Improvements',
+      'Custom Functionality',
+      'Technical & Structural Upgrades'
+    ],
+    cta: 'Improve Your Website',
+    linkParam: 'business',
+    theme: 'neutral'
+  },
+  {
+    id: 'agencies',
+    category: '04 — DIGITAL AGENCIES',
+    title: 'Digital Agencies',
+    subtitle: 'White-Label Development Support',
+    description: 'I support selected digital agencies with reliable WordPress, WooCommerce, and custom web development when they need additional technical capacity or help handling project overflow.',
+    services: [
+      'White-Label Development',
+      'WordPress & WooCommerce Execution',
+      'Custom Web Development',
+      'Figma-to-Website Precision',
+      'Project Overflow Support'
+    ],
+    cta: 'Partner With Me',
+    linkParam: 'agency',
+    theme: 'cool'
   }
 ];
 
@@ -135,14 +140,14 @@ export default function WhoIWorkWith() {
             variants={itemVariants}
             className="text-3xl sm:text-4xl lg:text-[44px] font-display font-medium tracking-tight text-[#0B132B] mb-5 leading-[1.18]"
           >
-            Different Businesses. One Reliable Development Partner.
+            Different Businesses. One Goal: A Better Digital Presence.
           </motion.h2>
           
           <motion.p 
             variants={itemVariants}
             className="text-[16px] sm:text-[17px] text-[#0B132B]/70 leading-relaxed max-w-2xl font-normal"
           >
-            Whether you need behind-the-scenes development support, a complete business website, or a custom digital product, I adapt my approach to fit your goals.
+            Whether you're launching a new business, turning an idea into a digital product, or improving an existing website, I build practical digital solutions around your goals — not generic templates.
           </motion.p>
         </motion.div>
 
@@ -331,10 +336,17 @@ function ServiceCard({ category }: { category: ServiceCategory }) {
           </div>
         </div>
 
-        {/* Service Title */}
-        <h3 className={`text-xl sm:text-2xl lg:text-[1.65rem] font-display font-medium tracking-tight mb-3.5 leading-[1.22] ${styles.title}`}>
-          {category.title}
-        </h3>
+        {/* Service Title & Subtitle */}
+        <div className="mb-3.5">
+          <h3 className={`text-xl sm:text-2xl lg:text-[1.65rem] font-display font-medium tracking-tight leading-[1.22] ${styles.title}`}>
+            {category.title}
+          </h3>
+          {category.subtitle && (
+            <p className={`text-[12px] sm:text-[13px] font-semibold tracking-wide mt-1 ${styles.label}`}>
+              {category.subtitle}
+            </p>
+          )}
+        </div>
 
         {/* Description */}
         <p className={`text-[14px] sm:text-[15px] leading-relaxed mb-8 ${styles.desc}`}>
@@ -389,6 +401,7 @@ function AbstractIndicator({ id, className }: { id: string; className?: string }
           <circle cx="22" cy="22" r="1.5" fill="currentColor" />
         </svg>
       );
+    case 'business-websites':
     case 'established':
       // Structured website / interface composition
       return (
@@ -402,16 +415,19 @@ function AbstractIndicator({ id, className }: { id: string; className?: string }
           <rect x="21" y="26" width="8" height="2" rx="1" fill="currentColor" fillOpacity="0.3" />
         </svg>
       );
+    case 'growing-businesses':
     case 'small-business':
-      // Clean storefront aperture & online beacon signal
+      // Clean growth / performance indicator
       return (
         <svg viewBox="0 0 44 44" fill="none" className={`w-9 h-9 ${className}`} aria-hidden="true">
-          <path d="M10 18L13 10H31L34 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M8 18C8 20 9.6 21.5 11.5 21.5C13.4 21.5 15 20 15 18C15 20 16.6 21.5 18.5 21.5C20.4 21.5 22 20 22 18C22 20 23.6 21.5 25.5 21.5C27.4 21.5 29 20 29 18C29 20 30.6 21.5 32.5 21.5C34.4 21.5 36 20 36 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          <rect x="11" y="21.5" width="22" height="13.5" rx="1.5" stroke="currentColor" strokeWidth="1.5" />
-          <rect x="19" y="27" width="6" height="8" stroke="currentColor" strokeWidth="1.2" />
+          <path d="M8 32L17 21L24 26L36 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M28 12H36V20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="17" cy="21" r="2" fill="currentColor" />
+          <circle cx="24" cy="26" r="2" fill="currentColor" />
+          <circle cx="36" cy="12" r="2.5" fill="currentColor" />
         </svg>
       );
+    case 'custom-solutions':
     case 'founders':
       // Connected data / workflow flow pattern
       return (

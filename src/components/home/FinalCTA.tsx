@@ -60,10 +60,10 @@ export default function FinalCTA() {
           {/* Headline */}
           <motion.h2 
             variants={itemVariants}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-[52px] xl:text-[54px] font-display font-bold text-[#FAF8F5] uppercase tracking-tight leading-[1.12] sm:leading-[1.08] mb-3.5 sm:mb-5 md:mb-6 max-w-3xl"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-[48px] xl:text-[52px] font-display font-bold text-[#FAF8F5] uppercase tracking-tight leading-[1.14] sm:leading-[1.1] mb-3.5 sm:mb-5 md:mb-6 max-w-4xl"
           >
-            <span className="block">Ready to Build</span>
-            <span className="block text-[#FAF8F5]/90">Something That Matters?</span>
+            <span className="block">Ready to Build Something</span>
+            <span className="block text-[#FAF8F5]/90">That Moves Your Business Forward?</span>
           </motion.h2>
 
           {/* Supporting Statement */}
@@ -71,7 +71,7 @@ export default function FinalCTA() {
             variants={itemVariants}
             className="text-[13.5px] sm:text-[15.5px] md:text-[18px] text-[#FAF8F5]/75 leading-relaxed font-normal max-w-2xl mx-auto mb-6 sm:mb-8 md:mb-10 px-1"
           >
-            Whether you need reliable white-label development support, a business website, an eCommerce experience, or a custom digital solution, let's discuss what you're trying to achieve.
+            Whether you need a new business website, a better eCommerce experience, a custom web solution, or help turning an idea into a working product, let's talk about what you're trying to achieve.
           </motion.p>
 
           {/* Action Buttons: Primary & Secondary */}
@@ -104,7 +104,7 @@ export default function FinalCTA() {
             variants={itemVariants}
             className="w-full mt-12 sm:mt-16 md:mt-20 pt-6 sm:pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[10px] sm:text-[11px] md:text-[11.5px] font-mono tracking-[0.16em] sm:tracking-[0.18em] text-[#FAF8F5]/45 uppercase text-center sm:text-left gap-2 sm:gap-4"
           >
-            <span>DIRECT COMMUNICATION • CLEAR DELIVERY • BUILT TO LAST</span>
+            <span>DIRECT COMMUNICATION • CLEAR DELIVERY • BUILT FOR BUSINESS VALUE</span>
             <span className="text-[#FAF8F5]/35">SAYED AHMAD • WEB DEVELOPMENT PARTNER</span>
           </motion.div>
         </motion.div>

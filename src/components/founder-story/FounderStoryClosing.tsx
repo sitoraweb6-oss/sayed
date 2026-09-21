@@ -29,7 +29,7 @@ export default function FounderStoryClosing() {
         </p>
 
         <p className="text-sm sm:text-[15px] text-stone-400 font-mono italic mb-10">
-          And I am still building—not simply more websites, but better digital experiences that help businesses establish a stronger presence online.
+          I’m still building—not simply more websites, but better digital experiences that help businesses communicate who they are, earn trust, generate more leads and sales, and create real value.
         </p>
 
         {/* Closing Action */}

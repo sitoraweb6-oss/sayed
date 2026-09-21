@@ -89,7 +89,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
           className="text-sm sm:text-base md:text-[1.05rem] text-[#1E3A68]/85 max-w-[340px] sm:max-w-lg md:max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed font-normal"
         >
-          I help agencies and businesses turn designs, ideas, and complex requirements into reliable, production-ready websites and digital solutions.
+          I help businesses turn their identity into high-performing websites that build trust, generate more leads and sales, and create real business value.
         </motion.p>
         
         {/* CTA Buttons: Polished Single-Line Mobile Experience */}

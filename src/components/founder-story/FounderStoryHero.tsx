@@ -47,7 +47,7 @@ export default function FounderStoryHero() {
               </h1>
 
               <p className="text-base sm:text-lg md:text-[19px] text-stone-600 leading-relaxed font-normal mb-8 sm:mb-10 max-w-xl">
-                A journey from marketing and digital promotion to building purposeful websites, eCommerce experiences, and custom digital solutions.
+                A journey from marketing and digital promotion to building websites, eCommerce experiences, and custom digital solutions that help businesses grow.
               </p>
 
               {/* Trajectory Metadata Marker */}

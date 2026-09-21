@@ -46,34 +46,34 @@ export default function Philosophy() {
             </motion.span>
             
             <motion.h2 variants={itemVariants} className="text-[28px] md:text-[34px] lg:text-[40px] font-display font-medium text-[#0B132B] mb-6 leading-[1.25]">
-              A website isn't a brochure. It's a funnel — built around how your customers think.
+              A website should do more than look good. It should move your business forward.
             </motion.h2>
             
             <motion.p variants={itemVariants} className="text-[15px] md:text-[16px] text-[#0B132B]/70 leading-relaxed mb-10">
-              Every business has a different audience, positioning, and competitors. So every website should be built around a different strategy — not a different color scheme on the same template.
+              Your website is often the first place customers experience your brand. I build around your identity, your audience, and your business goals — so the experience feels right, communicates your value clearly, and guides visitors toward action.
             </motion.p>
             
             {/* Flow Items */}
             <motion.div variants={itemVariants} className="flex flex-col gap-5 border-t border-[#0B132B]/10 pt-8">
               <div className="flex flex-col gap-1.5">
-                <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#D4AF37]">UNDERSTAND</span>
-                <span className="text-[14px] md:text-[15px] text-[#0B132B]/70 leading-relaxed">The business, its audience, its competitors.</span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#D4AF37]">01 — UNDERSTAND</span>
+                <span className="text-[14px] md:text-[15px] text-[#0B132B]/70 leading-relaxed">Your business, audience, positioning, and goals.</span>
               </div>
               
               <div className="flex flex-col gap-1.5">
-                <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#D4AF37]">POSITION</span>
-                <span className="text-[14px] md:text-[15px] text-[#0B132B]/70 leading-relaxed">A narrative only this business could tell.</span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#D4AF37]">02 — POSITION</span>
+                <span className="text-[14px] md:text-[15px] text-[#0B132B]/70 leading-relaxed">A digital experience that communicates what makes your business different.</span>
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#D4AF37]">CONVERT</span>
-                <span className="text-[14px] md:text-[15px] text-[#0B132B]/70 leading-relaxed">Every layout, CTA, and detail built to move visitors to action.</span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.1em] text-[#D4AF37]">03 — CONVERT</span>
+                <span className="text-[14px] md:text-[15px] text-[#0B132B]/70 leading-relaxed">Clear messaging, strong UX, and purposeful calls to action that turn attention into enquiries and sales.</span>
               </div>
             </motion.div>
 
             {/* Closing Line */}
             <motion.p variants={itemVariants} className="mt-10 md:mt-12 text-[16px] md:text-[17px] font-display italic text-[#0B132B] leading-relaxed">
-              Sometimes that means hours spent refining one button. Because small details decide who converts.
+              Because a great website isn't just an online presence. It's an asset that should create real value for your business.
             </motion.p>
 
           </motion.div>

@@ -17,53 +17,54 @@ interface Capability {
 
 const capabilities: Capability[] = [
   {
-    id: 'wordpress-development',
+    id: 'business-website-development',
     number: '01',
-    title: 'WordPress Development',
-    tag: 'Core Specialization',
-    description: 'Custom, professionally structured WordPress websites built around business requirements—not generic templates.',
-    deliverables: ['Custom Themes & Child Themes', 'Clean PHP & Gutenberg Blocks', 'ACF / Flexible Content Systems'],
+    title: 'Business Website Development',
+    tag: 'Websites Built for Business',
+    description: 'Modern, responsive websites that communicate your business identity clearly, build trust, and help turn visitors into customers.',
+    deliverables: ['Business Websites & WordPress', 'Responsive Design & Presentation', 'Lead-Focused Pages & Custom Features'],
     isFeatured: true
   },
   {
-    id: 'woocommerce-online-stores',
+    id: 'saas-mvp-development',
     number: '02',
-    title: 'WooCommerce & Online Stores',
-    tag: 'Commerce & Conversion',
-    description: 'eCommerce experiences designed around product discovery, usability, trust, and smoother purchasing journeys.',
-    deliverables: ['Custom Catalog & Checkout Flows', 'Payment Gateway Integrations', 'Inventory & Shipping Setup']
+    title: 'SaaS & MVP Development',
+    tag: 'Product & SaaS Foundations',
+    description: 'Turn SaaS ideas, startup concepts, and business requirements into functional web products and MVPs with the structure, features, and connected data needed to validate and grow an idea.',
+    deliverables: ['SaaS MVPs & Web Applications', 'Authentication & Role Dashboards', 'Database Integration & Custom Workflows'],
+    isFeatured: true
   },
   {
-    id: 'custom-web-functionality',
+    id: 'woocommerce-ecommerce',
     number: '03',
-    title: 'Custom Web Functionality',
-    tag: 'Architecture & Logic',
-    description: 'Custom plugins, integrations, APIs, and business-specific features beyond standard website builds.',
-    deliverables: ['Custom Plugin Development', '3rd-Party REST API Connections', 'Custom Post Types & Data Sync']
+    title: 'WooCommerce & E-commerce',
+    tag: 'Commerce & Conversion',
+    description: 'WooCommerce stores, product experiences, checkout flows, payment integrations, and custom e-commerce functionality built around how customers shop.',
+    deliverables: ['WooCommerce Stores & Product Catalogs', 'Checkout Optimization & Payments', 'Custom Store Features & Extensions']
   },
   {
-    id: 'figma-to-website',
+    id: 'custom-web-solutions',
     number: '04',
-    title: 'Figma-to-Website Development',
-    tag: 'Design Fidelity',
-    description: 'Turning detailed designs into responsive, accurate, production-ready digital experiences.',
-    deliverables: ['Pixel-Accurate Responsive Layouts', 'Interactive Micro-Interactions', 'Performance-Conscious Assets']
+    title: 'Custom Web Solutions',
+    tag: 'Business Systems & Logic',
+    description: 'Custom functionality, integrations, dashboards, workflows, and business-specific systems that go beyond what a standard website can provide.',
+    deliverables: ['Custom Functionality & Workflows', 'Dashboards & API Integrations', 'Database-Connected Systems']
   },
   {
-    id: 'web-apps-mvps',
+    id: 'website-redesign-optimization',
     number: '05',
-    title: 'Web Apps & MVP Development',
-    tag: 'Product Foundations',
-    description: 'Database-connected interfaces, authentication, dashboards, workflows, and early-stage digital products.',
-    deliverables: ['Auth & Role-Based Portals', 'Data Dashboards & Workflows', 'Database-Connected Backends']
+    title: 'Website Redesign & Optimization',
+    tag: 'Modernization & UX',
+    description: 'Modernize outdated websites, improve usability, strengthen the customer experience, and make your existing website work better for your business.',
+    deliverables: ['Website Redesign & Modernization', 'UX & Mobile Optimization', 'Conversion & Usability Improvements']
   },
   {
-    id: 'performance-optimization',
+    id: 'performance-technical-optimization',
     number: '06',
-    title: 'Performance Optimization',
-    tag: 'Speed & Usability',
-    description: 'Improving loading speed, usability, stability, and technical performance across devices.',
-    deliverables: ['Core Web Vitals Remediation', 'Asset & Database Query Tuning', 'Mobile Responsiveness & Caching']
+    title: 'Performance & Technical Optimization',
+    tag: 'Speed & Reliability',
+    description: 'Improve loading performance, mobile experience, technical structure, and unnecessary complexity for a faster and more reliable website.',
+    deliverables: ['Speed Optimization & Core Web Vitals', 'Mobile Performance & Technical Cleanup', 'Plugin & Frontend Optimization']
   }
 ];
 
