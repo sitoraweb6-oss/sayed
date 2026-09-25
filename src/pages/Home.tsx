@@ -7,6 +7,7 @@ import BrandLogoMarquee from '../components/home/BrandLogoMarquee';
 import WhoIWorkWith from '../components/home/WhoIWorkWith';
 import Services from '../components/home/Services';
 import AboutPreview from '../components/home/AboutPreview';
+import Testimonials from '../components/home/Testimonials';
 import FAQ from '../components/home/FAQ';
 import FinalCTA from '../components/home/FinalCTA';
 
@@ -39,6 +40,7 @@ export default function Home() {
         <Services />
         <div id="about" className="scroll-mt-20 md:scroll-mt-24" />
         <AboutPreview />
+        <Testimonials />
         <FAQ />
         <FinalCTA />
       </div>

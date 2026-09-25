@@ -38,3 +38,17 @@ export interface Service {
   description: string;
   icon?: string;
 }
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  headline: string;
+  relationship: string;
+  date: string;
+  content: string;
+  avatarText: string;
+  avatarBg: string;
+  badge?: string;
+  screenshotSrc?: string;
+  linkedinVerified?: boolean;
+}
