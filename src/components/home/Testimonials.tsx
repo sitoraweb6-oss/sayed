@@ -1,20 +1,86 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Maximize2, X, ExternalLink } from 'lucide-react';
+import { Maximize2, X, ExternalLink, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import { recommendationScreenshots, RecommendationItem } from '../../data/recommendations';
-import AutoDetectScreenshot from './AutoDetectScreenshot';
 
 export default function Testimonials() {
-  const [activeImageModal, setActiveImageModal] = useState<{
-    item: RecommendationItem;
-    resolvedSrc: string;
-  } | null>(null);
+  const [activeImageModal, setActiveImageModal] = useState<RecommendationItem | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(3);
+  const touchStartXRef = useRef<number | null>(null);
+  const touchDeltaXRef = useRef<number>(0);
+  const autoplayTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  // Store resolved src paths if loaded
-  const [resolvedSrcs, setResolvedSrcs] = useState<Record<string, string>>({});
+  const total = recommendationScreenshots.length; // 5
 
-  const handleImageFound = (id: string, src: string) => {
-    setResolvedSrcs((prev) => ({ ...prev, [id]: src }));
+  // Update visible count based on screen size (1 on mobile, 2 on tablet, 3 on desktop)
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setVisibleCount(1);
+      } else if (window.innerWidth < 1024) {
+        setVisibleCount(2);
+      } else {
+        setVisibleCount(3);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const maxIndex = Math.max(0, total - visibleCount);
+
+  const handleNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+  }, [maxIndex]);
+
+  const handlePrev = useCallback(() => {
+    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+  }, [maxIndex]);
+
+  // Smooth natural auto-scroll (changes slide every 3.8s, pauses immediately on hover, touch, or active modal)
+  useEffect(() => {
+    if (isPaused || activeImageModal !== null) {
+      if (autoplayTimerRef.current) clearInterval(autoplayTimerRef.current);
+      return;
+    }
+
+    autoplayTimerRef.current = setInterval(() => {
+      handleNext();
+    }, 3800);
+
+    return () => {
+      if (autoplayTimerRef.current) clearInterval(autoplayTimerRef.current);
+    };
+  }, [isPaused, activeImageModal, handleNext]);
+
+  // Touch swipe support for mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartXRef.current = e.touches[0].clientX;
+    touchDeltaXRef.current = 0;
+    setIsPaused(true);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStartXRef.current !== null) {
+      touchDeltaXRef.current = e.touches[0].clientX - touchStartXRef.current;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (Math.abs(touchDeltaXRef.current) > 40) {
+      if (touchDeltaXRef.current < 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+    touchStartXRef.current = null;
+    touchDeltaXRef.current = 0;
+    // Keep paused momentarily then resume
+    setTimeout(() => setIsPaused(false), 2000);
   };
 
   return (
@@ -25,7 +91,7 @@ export default function Testimonials() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
         {/* Header Block - Unchanged title & style */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-14 gap-6">
           <div>
             <div className="inline-flex items-center gap-2 mb-3">
               <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" aria-hidden="true" />
@@ -46,51 +112,112 @@ export default function Testimonials() {
             </p>
           </div>
 
-          {/* LinkedIn Verified Tag */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-stone-200 rounded-full shadow-xs self-start md:self-auto">
-            <svg className="w-4 h-4 fill-[#0A66C2]" viewBox="0 0 24 24">
-              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.65 1.65 0 1 0 0-3.3 1.65 1.65 0 0 0 0 3.3m1.4 9.74v-8.37H5.06v8.37h2.8z" />
-            </svg>
-            <span className="text-xs font-mono font-bold tracking-wider uppercase text-stone-700">
-              LinkedIn Screenshots
-            </span>
+          {/* Controls: Next/Prev & Indicators */}
+          <div className="flex items-center gap-3 shrink-0">
+            {/* Pause/Play indicator */}
+            <button
+              type="button"
+              onClick={() => setIsPaused((prev) => !prev)}
+              aria-label={isPaused ? "Play carousel autoplay" : "Pause carousel autoplay"}
+              className="w-9 h-9 rounded-full border border-stone-300 hover:border-stone-900 flex items-center justify-center text-stone-600 hover:text-stone-900 transition-colors bg-white shadow-2xs"
+              title={isPaused ? "Play carousel" : "Pause carousel"}
+            >
+              {isPaused ? <Play className="w-3.5 h-3.5 fill-current ml-0.5" /> : <Pause className="w-3.5 h-3.5" />}
+            </button>
+
+            {/* Left Button */}
+            <button
+              type="button"
+              onClick={handlePrev}
+              aria-label="Previous recommendation"
+              className="w-10 h-10 rounded-full border border-stone-300 hover:border-stone-900 flex items-center justify-center text-stone-700 hover:text-stone-900 transition-colors bg-white shadow-2xs hover:shadow-xs focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#D4AF37]"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            {/* Right Button */}
+            <button
+              type="button"
+              onClick={handleNext}
+              aria-label="Next recommendation"
+              className="w-10 h-10 rounded-full border border-stone-300 hover:border-stone-900 flex items-center justify-center text-stone-700 hover:text-stone-900 transition-colors bg-white shadow-2xs hover:shadow-xs focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#D4AF37]"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
 
-        {/* ONLY Screenshots Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {recommendationScreenshots.map((item, idx) => {
-            const reviewNumber = idx + 1;
-            const currentResolved = resolvedSrcs[item.id] || item.imageCandidates[0];
-
-            return (
-              <div
-                key={item.id}
-                className="group bg-white rounded-2xl border border-stone-200 hover:border-stone-400 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col"
-              >
-                {/* Screenshot Container with Click to Enlarge */}
-                <div 
-                  className="relative cursor-pointer bg-stone-50 overflow-hidden"
-                  onClick={() => setActiveImageModal({ item, resolvedSrc: currentResolved })}
+        {/* Selected target element: div:nth-of-type(2) inside section#testimonials */}
+        {/* CAROUSEL WRAPPER: PC shows 3 per screen, Mobile shows 1 per screen. Touch/hover pauses */}
+        <div 
+          className="relative overflow-hidden cursor-grab active:cursor-grabbing select-none"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          {/* Carousel Track */}
+          <div 
+            className="flex transition-transform duration-700 ease-out gap-6"
+            style={{
+              transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`,
+            }}
+          >
+            {recommendationScreenshots.map((item, idx) => {
+              return (
+                <div
+                  key={item.id}
+                  style={{
+                    flex: `0 0 calc(${100 / visibleCount}% - ${(visibleCount - 1) * 24 / visibleCount}px)`,
+                  }}
+                  className="group bg-white rounded-2xl border border-stone-200 hover:border-stone-400 overflow-hidden shadow-xs hover:shadow-md transition-all flex flex-col shrink-0"
                 >
-                  <AutoDetectScreenshot
-                    candidates={item.imageCandidates}
-                    alt={`LinkedIn recommendation for Sayed Ahmad from ${item.name}`}
-                    reviewNumber={reviewNumber}
-                    onImageFound={(foundSrc) => handleImageFound(item.id, foundSrc)}
-                  />
+                  {/* Screenshot Container with Click to Enlarge */}
+                  <div 
+                    className="relative cursor-pointer bg-stone-50 overflow-hidden"
+                    onClick={() => {
+                      setIsPaused(true);
+                      setActiveImageModal(item);
+                    }}
+                  >
+                    <img
+                      src={item.src}
+                      alt={`LinkedIn recommendation for Sayed Ahmad from ${item.name}`}
+                      loading={idx < 3 ? "eager" : "lazy"}
+                      decoding="async"
+                      className="w-full h-auto block object-contain transition-transform duration-500 group-hover:scale-[1.015]"
+                    />
 
-                  {/* Hover Overlay to Enlarge */}
-                  <div className="absolute inset-0 bg-stone-900/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                    <div className="bg-white/95 text-stone-900 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium flex items-center gap-1.5 shadow-md">
-                      <Maximize2 className="w-3.5 h-3.5" />
-                      <span>Enlarge Screenshot</span>
+                    {/* Hover Overlay to Enlarge */}
+                    <div className="absolute inset-0 bg-stone-900/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                      <div className="bg-white/95 text-stone-900 px-3.5 py-1.5 rounded-full text-xs font-mono font-medium flex items-center gap-1.5 shadow-md">
+                        <Maximize2 className="w-3.5 h-3.5" />
+                        <span>Enlarge Screenshot</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Carousel Pagination Dots */}
+        <div className="flex items-center justify-center gap-2 mt-8 sm:mt-10">
+          {Array.from({ length: maxIndex + 1 }).map((_, dotIdx) => (
+            <button
+              key={dotIdx}
+              type="button"
+              onClick={() => setCurrentIndex(dotIdx)}
+              aria-label={`Go to slide group ${dotIdx + 1}`}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                currentIndex === dotIdx
+                  ? 'w-7 bg-stone-900'
+                  : 'w-2 bg-stone-300 hover:bg-stone-400'
+              }`}
+            />
+          ))}
         </div>
       </div>
 
@@ -115,7 +242,7 @@ export default function Testimonials() {
               transition={{ duration: 0.2 }}
               role="dialog"
               aria-modal="true"
-              aria-label={`LinkedIn Recommendation Screenshot from ${activeImageModal.item.name}`}
+              aria-label={`LinkedIn Recommendation Screenshot from ${activeImageModal.name}`}
               className="relative w-full max-w-4xl max-h-[92vh] bg-white rounded-2xl shadow-2xl border border-stone-300 overflow-hidden flex flex-col z-10"
             >
               {/* Modal Top Header */}
@@ -145,8 +272,8 @@ export default function Testimonials() {
               <div className="p-4 sm:p-6 overflow-y-auto bg-stone-100 flex flex-col items-center justify-center">
                 <div className="w-full max-w-3xl rounded-xl overflow-hidden shadow-lg border border-stone-200 bg-white">
                   <img
-                    src={activeImageModal.resolvedSrc}
-                    alt={`LinkedIn recommendation screenshot from ${activeImageModal.item.name}`}
+                    src={activeImageModal.src}
+                    alt={`LinkedIn recommendation screenshot from ${activeImageModal.name}`}
                     className="w-full h-auto block"
                   />
                 </div>
