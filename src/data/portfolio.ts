@@ -24,9 +24,17 @@ export interface Project {
 
 /**
  * Automatically maps a project number or ID to its corresponding portfolio image.
- * e.g., 1 -> /images/portfolio/portfolio-01.webp, 15 -> /images/portfolio/portfolio-15.webp
+ * e.g., 1 -> /images/portfolio/portfolio-01.webp, "01.2" -> /images/portfolio/portfolio-01.2.webp, 15 -> /images/portfolio/portfolio-15.webp
  */
 export function getPortfolioImageUrl(projectIdOrIndex: string | number): string {
+  if (typeof projectIdOrIndex === 'string') {
+    if (projectIdOrIndex === '01.2' || projectIdOrIndex === '1.2') {
+      return '/images/portfolio/portfolio-01.2.webp';
+    }
+    if (projectIdOrIndex === '01.3' || projectIdOrIndex === '1.3') {
+      return '/images/portfolio/portfolio-01.3.webp';
+    }
+  }
   const num = typeof projectIdOrIndex === 'number' ? projectIdOrIndex : parseInt(projectIdOrIndex, 10);
   if (!isNaN(num) && num >= 1) {
     const padded = String(num).padStart(2, '0');
@@ -47,7 +55,7 @@ export const portfolioProjects: Project[] = [
     id: "1",
     title: "Tanowra",
     slug: "tanowra",
-    category: "E-commerce",
+    category: "E-Commerce",
     shortDescription: "A premium online storefront presenting high-quality footwear and leather goods with a seamless shopping journey.",
     role: "WordPress & WooCommerce Developer",
     overview: "A refined e-commerce platform designed to showcase premium footwear and leather products. The project focused on building an intuitive digital environment that matched the high-end nature of the brand.",
@@ -64,11 +72,76 @@ export const portfolioProjects: Project[] = [
     techStack: ["WordPress", "WooCommerce", "Elementor"],
     skills: ["E-commerce Website Development", "Web Design", "WordPress", "Elementor"],
     liveUrl: "https://www.tanowra.com/",
-    image: getPortfolioImageUrl(1),
+    image: "/images/portfolio/portfolio-01.webp",
     cta: "Need a premium e-commerce experience for your brand? Let’s discuss your project.",
     seo: {
       metaTitle: "Tanowra | Premium Leather & Footwear E-commerce Website",
       metaDescription: "Discover how we built a premium, responsive WordPress and WooCommerce storefront for Tanowra, focusing on clear product presentation and smooth navigation."
+    },
+    featured: true
+  },
+  {
+    id: "01.2",
+    title: "Heejab — Headless E-Commerce",
+    slug: "heejab",
+    category: "E-Commerce",
+    shortDescription: "A modern headless e-commerce platform built for a fashion brand, combining a custom React storefront with WordPress and WooCommerce as the backend.",
+    role: "E-Commerce · Headless WordPress · Custom Frontend",
+    overview: "A modern headless e-commerce platform built for a fashion brand, combining a custom React storefront with WordPress and WooCommerce as the backend.",
+    challenge: "The previous WordPress setup had performance issues, limited design flexibility, frequent crashes, and became difficult to customize as more plugins and frontend elements were added.",
+    solution: "Built a custom React storefront while keeping WordPress and WooCommerce for product management, orders, and e-commerce operations. The new frontend was designed around the brand's requirements with a cleaner product experience, responsive layouts, and reduced dependency on heavy frontend WordPress plugins.",
+    keyFeatures: [
+      "Custom React storefront",
+      "Headless WordPress + WooCommerce integration",
+      "Custom product and category experiences",
+      "Responsive, mobile-first design",
+      "Custom cart and checkout experience",
+      "Smooth UI interactions",
+      "WooCommerce-powered product management",
+      "Performance-focused frontend architecture"
+    ],
+    outcome: "Delivered a fast, flexible headless e-commerce experience that eliminated previous performance bottlenecks while preserving WooCommerce's robust operational backend.",
+    techStack: ["React", "WordPress", "WooCommerce", "Tailwind CSS", "Framer Motion", "Headless Architecture"],
+    skills: ["E-Commerce", "Headless WordPress", "Custom Frontend", "React", "WooCommerce"],
+    liveUrl: "#",
+    image: "/images/portfolio/portfolio-01.2.webp",
+    cta: "Planning a headless e-commerce store or custom storefront? Let’s discuss your project.",
+    seo: {
+      metaTitle: "Heejab | Headless E-Commerce Platform",
+      metaDescription: "Case study on Heejab: a modern headless e-commerce platform combining custom React frontend with WordPress and WooCommerce backend."
+    },
+    featured: true
+  },
+  {
+    id: "01.3",
+    title: "SEEN SENSE — Fashion E-Commerce",
+    slug: "seen-sense",
+    category: "E-Commerce",
+    shortDescription: "A premium fashion e-commerce experience designed for a modern apparel brand, combining editorial-style visuals with a clean and conversion-focused shopping experience.",
+    role: "E-Commerce · Fashion · Shopify",
+    overview: "A premium fashion e-commerce experience designed for a modern apparel brand, combining editorial-style visuals with a clean and conversion-focused shopping experience.",
+    challenge: "The brand needed a digital storefront that could present its fashion collections with a stronger visual identity while keeping product discovery simple, intuitive, and responsive across desktop and mobile.",
+    solution: "Built a modern Shopify storefront focused on premium presentation, clear product discovery, and a seamless shopping journey. The design combines editorial-inspired layouts with structured category navigation, promotional messaging, and mobile-first product browsing.",
+    keyFeatures: [
+      "Premium fashion-focused storefront",
+      "Shopify e-commerce setup",
+      "Editorial-style hero experience",
+      "Product category navigation",
+      "Responsive desktop and mobile layouts",
+      "Featured collection sections",
+      "Clear calls-to-action",
+      "Premium visual presentation",
+      "Mobile-optimized shopping experience"
+    ],
+    outcome: "Delivered an editorial-inspired fashion storefront with seamless product discovery and responsive performance that elevates brand perception and conversion.",
+    techStack: ["Shopify", "Liquid", "JavaScript", "HTML", "CSS", "Responsive Design"],
+    skills: ["E-Commerce", "Fashion", "Shopify", "Liquid", "Responsive Design"],
+    liveUrl: "#",
+    image: "/images/portfolio/portfolio-01.3.webp",
+    cta: "Need a premium fashion or Shopify storefront for your brand? Let’s connect.",
+    seo: {
+      metaTitle: "SEEN SENSE | Fashion E-Commerce Experience",
+      metaDescription: "Case study on SEEN SENSE: a modern fashion e-commerce storefront on Shopify with editorial styling and conversion-focused shopping."
     },
     featured: true
   },
@@ -106,7 +179,7 @@ export const portfolioProjects: Project[] = [
     id: "3",
     title: "Glam Touch",
     slug: "glam-touch",
-    category: "E-commerce",
+    category: "E-Commerce",
     shortDescription: "An elegant WooCommerce store designed to showcase modest fashion apparel with intuitive filtering and mobile accessibility.",
     role: "WordPress & WooCommerce Developer",
     overview: "An elegant online store designed to showcase a diverse collection of modest fashion apparel, focusing heavily on intuitive navigation and mobile accessibility.",
@@ -219,7 +292,7 @@ export const portfolioProjects: Project[] = [
     id: "7",
     title: "Inaya Attire",
     slug: "inaya-attire",
-    category: "E-commerce",
+    category: "E-Commerce",
     shortDescription: "A responsive e-commerce storefront dedicated to modest fashion apparel, prioritizing usability and mobile shopping.",
     role: "Full-Stack Web Developer",
     overview: "A clean, modern e-commerce platform dedicated to showcasing a growing inventory of modest fashion apparel, built with a strong focus on core usability.",
@@ -247,7 +320,7 @@ export const portfolioProjects: Project[] = [
     id: "8",
     title: "Midley",
     slug: "midley",
-    category: "E-commerce",
+    category: "E-Commerce",
     shortDescription: "A versatile multi-category online store built to handle diverse product lines with a structured discovery experience.",
     role: "WordPress & WooCommerce Developer",
     overview: "A versatile multi-category online store built to handle diverse product lines, ranging from travel accessories and bags to winter wear and lifestyle gadgets.",
