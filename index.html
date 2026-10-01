@@ -2,6 +2,41 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function() {
+        try {
+          var originalFetch = typeof window !== 'undefined' && window.fetch ? window.fetch.bind(window) : undefined;
+          var activeFetch = originalFetch;
+
+          function getFetch() {
+            return activeFetch;
+          }
+          function setFetch(fn) {
+            activeFetch = fn;
+          }
+
+          try {
+            Object.defineProperty(window, 'fetch', {
+              get: getFetch,
+              set: setFetch,
+              configurable: true,
+              enumerable: true
+            });
+          } catch (_) {}
+
+          try {
+            if (typeof Window !== 'undefined' && Window.prototype) {
+              Object.defineProperty(Window.prototype, 'fetch', {
+                get: getFetch,
+                set: setFetch,
+                configurable: true,
+                enumerable: true
+              });
+            }
+          } catch (_) {}
+        } catch (_) {}
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sayed Ahmad | Web Developer & Digital Solutions Partner</title>
     <meta name="description" content="Sayed Ahmad is a web developer and founder of Sitora Web, helping businesses build high-performing websites, eCommerce experiences, and custom web solutions." />
