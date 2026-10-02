@@ -103,7 +103,7 @@ export const portfolioProjects: Project[] = [
     outcome: "Delivered a fast, flexible headless e-commerce experience that eliminated previous performance bottlenecks while preserving WooCommerce's robust operational backend.",
     techStack: ["React", "WordPress", "WooCommerce", "Tailwind CSS", "Framer Motion", "Headless Architecture"],
     skills: ["E-Commerce", "Headless WordPress", "Custom Frontend", "React", "WooCommerce"],
-    liveUrl: "#",
+    liveUrl: "https://heejab.shop/",
     image: "/images/portfolio/portfolio-01.2.webp",
     cta: "Planning a headless e-commerce store or custom storefront? Let’s discuss your project.",
     seo: {
@@ -136,7 +136,7 @@ export const portfolioProjects: Project[] = [
     outcome: "Delivered an editorial-inspired fashion storefront with seamless product discovery and responsive performance that elevates brand perception and conversion.",
     techStack: ["Shopify", "Liquid", "JavaScript", "HTML", "CSS", "Responsive Design"],
     skills: ["E-Commerce", "Fashion", "Shopify", "Liquid", "Responsive Design"],
-    liveUrl: "#",
+    liveUrl: "https://www.seensense.com/",
     image: "/images/portfolio/portfolio-01.3.webp",
     cta: "Need a premium fashion or Shopify storefront for your brand? Let’s connect.",
     seo: {
