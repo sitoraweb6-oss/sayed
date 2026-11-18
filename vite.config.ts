@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 
-export default defineConfig(() => {
+export default defineConfig(({ isSsrBuild }) => {
   return {
     plugins: [react(), tailwindcss()],
     resolve: {
@@ -13,23 +13,31 @@ export default defineConfig(() => {
     },
     build: {
       chunkSizeWarningLimit: 600,
-      rollupOptions: {
-        output: {
-          manualChunks(id) {
-            if (id.includes('node_modules')) {
-              if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom') || id.includes('react-helmet-async')) {
-                return 'vendor-react';
-              }
-              if (id.includes('motion')) {
-                return 'vendor-motion';
-              }
-              if (id.includes('lucide-react')) {
-                return 'vendor-icons';
-              }
-            }
+      rollupOptions: isSsrBuild
+        ? {
+            // Fixed, predictable filename so server.ts can `import()` it
+            // without guessing a hashed chunk name.
+            output: {
+              entryFileNames: 'entry-server.js',
+            },
+          }
+        : {
+            output: {
+              manualChunks(id) {
+                if (id.includes('node_modules')) {
+                  if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom') || id.includes('react-helmet-async')) {
+                    return 'vendor-react';
+                  }
+                  if (id.includes('motion')) {
+                    return 'vendor-motion';
+                  }
+                  if (id.includes('lucide-react')) {
+                    return 'vendor-icons';
+                  }
+                }
+              },
+            },
           },
-        },
-      },
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.

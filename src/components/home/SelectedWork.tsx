@@ -7,9 +7,11 @@ import CaseStudyModal from '../portfolio/CaseStudyModal';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../../lib/utils';
 
+const isBrowser = typeof window !== 'undefined';
+
 export default function SelectedWork() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const [visibleCount, setVisibleCount] = useState(window.innerWidth < 768 ? 2 : 6);
+  const [isMobile, setIsMobile] = useState(isBrowser ? window.innerWidth < 768 : false);
+  const [visibleCount, setVisibleCount] = useState(isBrowser && window.innerWidth < 768 ? 2 : 6);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [activeCategory, setActiveCategory] = useState('All Work');
   const [scrollProgress, setScrollProgress] = useState(0);

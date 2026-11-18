@@ -150,17 +150,17 @@ export default function Contact() {
       <Helmet>
         <title>Contact & 1:1 Consultation | Sayed Ahmad</title>
         <meta name="description" content="Get in touch to discuss business web development projects, custom web solutions, eCommerce builds, or book a 1:1 consultation call." />
-        <link rel="canonical" href="https://www.sitora.org/contact" />
+        <link rel="canonical" href="https://sayed.sitora.org/contact" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Contact & 1:1 Consultation | Sayed Ahmad" />
         <meta property="og:description" content="Get in touch to discuss business web development projects, custom web solutions, eCommerce builds, or book a 1:1 consultation call." />
-        <meta property="og:url" content="https://www.sitora.org/contact" />
+        <meta property="og:url" content="https://sayed.sitora.org/contact" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.sitora.org/images/founder-story/founder.webp" />
+        <meta property="og:image" content="https://sayed.sitora.org/images/founder-story/founder.webp" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Contact & 1:1 Consultation | Sayed Ahmad" />
         <meta name="twitter:description" content="Get in touch to discuss business web development projects, custom web solutions, eCommerce builds, or book a 1:1 consultation call." />
-        <meta name="twitter:image" content="https://www.sitora.org/images/founder-story/founder.webp" />
+        <meta name="twitter:image" content="https://sayed.sitora.org/images/founder-story/founder.webp" />
       </Helmet>
 
       <div className="pt-32 pb-24 bg-stone-50 min-h-screen">

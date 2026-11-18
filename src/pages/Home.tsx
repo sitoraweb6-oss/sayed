@@ -17,17 +17,17 @@ export default function Home() {
       <Helmet>
         <title>Sayed Ahmad | Web Developer & Digital Solutions Partner</title>
         <meta name="description" content="Sayed Ahmad is a web developer and founder of Sitora Web, helping businesses build high-performing websites, eCommerce experiences, and custom web solutions." />
-        <link rel="canonical" href="https://www.sitora.org/" />
+        <link rel="canonical" href="https://sayed.sitora.org/" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Sayed Ahmad | Web Developer & Digital Solutions Partner" />
         <meta property="og:description" content="Sayed Ahmad is a web developer and founder of Sitora Web, helping businesses build high-performing websites, eCommerce experiences, and custom web solutions." />
-        <meta property="og:url" content="https://www.sitora.org/" />
+        <meta property="og:url" content="https://sayed.sitora.org/" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.sitora.org/images/founder-story/founder.webp" />
+        <meta property="og:image" content="https://sayed.sitora.org/images/founder-story/founder.webp" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Sayed Ahmad | Web Developer & Digital Solutions Partner" />
         <meta name="twitter:description" content="Sayed Ahmad is a web developer and founder of Sitora Web, helping businesses build high-performing websites, eCommerce experiences, and custom web solutions." />
-        <meta name="twitter:image" content="https://www.sitora.org/images/founder-story/founder.webp" />
+        <meta name="twitter:image" content="https://sayed.sitora.org/images/founder-story/founder.webp" />
       </Helmet>
       
       <div className="flex flex-col">

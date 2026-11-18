@@ -3,4 +3,48 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://www.sitora.org/sitemap.xml
+# Explicitly allow AI crawlers / answer engines so assistants like
+# ChatGPT, Claude, Perplexity, and Google's AI features can read and
+# cite this site. (Already covered by "Allow: /" above for everything
+# except /api/ - these lines just make the intent unambiguous.)
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /api/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /api/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /api/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /api/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /api/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /api/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+
+Sitemap: https://sayed.sitora.org/sitemap.xml

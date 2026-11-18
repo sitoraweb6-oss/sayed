@@ -16,14 +16,14 @@ export default function PrivacyPolicy() {
           name="description" 
           content="Privacy Policy for Sayed Ahmad's web development portfolio and Sitora Web. Transparent details on contact form inquiries, communication, and data handling." 
         />
-        <link rel="canonical" href="https://www.sitora.org/privacy-policy" />
+        <link rel="canonical" href="https://sayed.sitora.org/privacy-policy" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Privacy Policy — Sayed Ahmad | Sitora Web" />
         <meta 
           property="og:description" 
           content="Privacy Policy for Sayed Ahmad's web development portfolio and Sitora Web. Transparent details on contact form inquiries, communication, and data handling." 
         />
-        <meta property="og:url" content="https://www.sitora.org/privacy-policy" />
+        <meta property="og:url" content="https://sayed.sitora.org/privacy-policy" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="Privacy Policy — Sayed Ahmad | Sitora Web" />

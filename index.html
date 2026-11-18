@@ -38,27 +38,21 @@
       })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sayed Ahmad | Web Developer & Digital Solutions Partner</title>
-    <meta name="description" content="Sayed Ahmad is a web developer and founder of Sitora Web, helping businesses build high-performing websites, eCommerce experiences, and custom web solutions." />
     <meta name="author" content="Sayed Ahmad" />
-    <meta name="robots" content="index, follow" />
-
-    <!-- Open Graph / Social Sharing Cards -->
     <meta property="og:site_name" content="Sayed Ahmad" />
-    <meta property="og:title" content="Sayed Ahmad | Web Developer & Digital Solutions Partner" />
-    <meta property="og:description" content="Sayed Ahmad is a web developer and founder of Sitora Web, helping businesses build high-performing websites, eCommerce experiences, and custom web solutions." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.sitora.org/" />
-    <meta property="og:image" content="https://www.sitora.org/images/founder-story/founder.webp" />
-    
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Sayed Ahmad | Web Developer & Digital Solutions Partner" />
-    <meta name="twitter:description" content="Sayed Ahmad is a web developer and founder of Sitora Web, helping businesses build high-performing websites, eCommerce experiences, and custom web solutions." />
-    <meta name="twitter:image" content="https://www.sitora.org/images/founder-story/founder.webp" />
-    
     <link rel="icon" type="image/png" href="/images/profile/Modern.png" />
-    <link rel="canonical" href="https://www.sitora.org/" />
+
+    <!--
+      Per-route title, meta description, robots, canonical, Open Graph and
+      Twitter tags are rendered server-side (see src/entry-server.tsx,
+      src/pages/*.tsx's <Helmet> blocks, and server.ts) and injected right
+      here for every request, so the raw HTML for each route already
+      carries its own real, final tags - no JS execution required to read
+      them. This placeholder is replaced before the response is sent; if
+      you're reading it in the delivered HTML, server-side rendering did
+      not run for this request.
+    -->
+    <!--app-head-->
 
     <!-- Performance: Preconnect & Asynchronous Non-Blocking Google Fonts Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,14 +70,13 @@
       "@graph": [
         {
           "@type": "Person",
-          "@id": "https://www.sitora.org/#person",
+          "@id": "https://sayed.sitora.org/#person",
           "name": "Sayed Ahmad",
           "jobTitle": "Web Developer & Digital Solutions Partner",
-          "url": "https://www.sitora.org/",
-          "image": "https://www.sitora.org/images/founder-story/founder.webp",
+          "url": "https://sayed.sitora.org/",
+          "image": "https://sayed.sitora.org/images/founder-story/founder.webp",
           "sameAs": [
-            "https://www.linkedin.com/in/sayedahmad-/",
-            "https://www.sitora.org/"
+            "https://www.linkedin.com/in/sayedahmad-/"
           ],
           "email": "hello@sitora.org",
           "worksFor": {
@@ -105,27 +98,27 @@
         },
         {
           "@type": "ProfilePage",
-          "@id": "https://www.sitora.org/#webpage",
-          "url": "https://www.sitora.org/",
+          "@id": "https://sayed.sitora.org/#webpage",
+          "url": "https://sayed.sitora.org/",
           "name": "Sayed Ahmad | Web Developer & Digital Solutions Partner",
           "description": "Sayed Ahmad is a web developer and founder of Sitora Web, helping businesses build high-performing websites, eCommerce experiences, and custom web solutions.",
           "mainEntity": {
-            "@id": "https://www.sitora.org/#person"
+            "@id": "https://sayed.sitora.org/#person"
           }
         },
         {
           "@type": "WebSite",
-          "@id": "https://www.sitora.org/#website",
-          "url": "https://www.sitora.org/",
+          "@id": "https://sayed.sitora.org/#website",
+          "url": "https://sayed.sitora.org/",
           "name": "Sayed Ahmad | Web Developer & Digital Solutions Partner",
           "publisher": {
-            "@id": "https://www.sitora.org/#person"
+            "@id": "https://sayed.sitora.org/#person"
           }
         },
         {
           "@type": "FAQPage",
-          "@id": "https://www.sitora.org/#faq",
-          "url": "https://www.sitora.org/",
+          "@id": "https://sayed.sitora.org/#faq",
+          "url": "https://sayed.sitora.org/",
           "mainEntity": [
             {
               "@type": "Question",
@@ -182,7 +175,7 @@
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><!--app-html--></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

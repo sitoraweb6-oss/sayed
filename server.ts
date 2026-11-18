@@ -1,7 +1,13 @@
 import express, { Request, Response } from "express";
+import fs from "fs";
 import path from "path";
+import { fileURLToPath, pathToFileURL } from "url";
 import { createServer as createViteServer } from "vite";
 import { generateEmailHtml, generateEmailText, ContactEmailPayload } from "./server/emailTemplate";
+
+// Works both in dev (tsx, native ESM) and in the bundled prod server.cjs -
+// esbuild shims import.meta.url for CommonJS output automatically.
+const currentDir = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const PORT = 3000;
@@ -184,20 +190,77 @@ app.post("/api/contact", async (req: Request, res: Response) => {
 });
 
 // -------------------------------------------------------------
-// Vite Middleware / Static Serving Setup
+// Server-Side Rendering
 // -------------------------------------------------------------
+// Every request now runs the matched route through React's renderToString
+// (see src/entry-server.tsx) and sends back fully-rendered HTML - real
+// content, title, meta description, canonical, OG/Twitter tags and all -
+// instead of a near-empty shell that only fills in after JavaScript runs.
+// That raw HTML is what non-JS clients (most AI crawlers/answer engines,
+// link-preview bots, some SEO tools) actually see.
+//
+// The browser still hydrates this markup normally afterwards (see
+// src/main.tsx) - visitors get the same interactive app as before.
+
+const isProd = process.env.NODE_ENV === "production";
+
+// Minimal fallback <head> tags if SSR itself throws, so a bug in a page
+// component degrades to "generic homepage tags" instead of a blank head.
+const FALLBACK_HEAD = `
+    <title>Sayed Ahmad | Web Developer & Digital Solutions Partner</title>
+    <meta name="description" content="Sayed Ahmad is a web developer and founder of Sitora Web, helping businesses build high-performing websites, eCommerce experiences, and custom web solutions." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://sayed.sitora.org/" />`;
 
 async function startServer() {
-  if (process.env.NODE_ENV !== "production") {
+  if (!isProd) {
+    // ---------------- Development ----------------
     const vite = await createViteServer({
       server: { middlewareMode: true },
-      appType: "spa",
+      appType: "custom", // we handle the HTML response ourselves, below
     });
     app.use(vite.middlewares);
+
+    app.use("*", async (req: Request, res: Response) => {
+      const url = req.originalUrl;
+      try {
+        let template = fs.readFileSync(
+          path.join(currentDir, "index.html"),
+          "utf-8"
+        );
+        template = await vite.transformIndexHtml(url, template);
+
+        const { render } = await vite.ssrLoadModule("/src/entry-server.tsx");
+        const { html: appHtml, helmetTags } = render(url);
+
+        const responseHtml = template
+          .replace("<!--app-head-->", helmetTags)
+          .replace("<!--app-html-->", appHtml);
+
+        res.status(200).set({ "Content-Type": "text/html" }).send(responseHtml);
+      } catch (err) {
+        vite.ssrFixStacktrace(err as Error);
+        console.error("[SSR Error - dev]", err);
+        res.status(500).end((err as Error).message);
+      }
+    });
   } else {
-    const distPath = path.join(process.cwd(), "dist");
+    // ---------------- Production ----------------
+    const clientDistPath = path.join(currentDir, "client");
+    const template = fs.readFileSync(
+      path.join(clientDistPath, "index.html"),
+      "utf-8"
+    );
+    const serverEntryPath = path.join(
+      currentDir,
+      "server",
+      "entry-server.js"
+    );
+    const { render } = await import(pathToFileURL(serverEntryPath).href);
+
     app.use(
-      express.static(distPath, {
+      express.static(clientDistPath, {
+        index: false, // never serve a static index.html - every "/" request is server-rendered
         setHeaders: (res, filePath) => {
           if (filePath.endsWith(".svg")) {
             res.setHeader("Content-Type", "image/svg+xml");
@@ -205,13 +268,28 @@ async function startServer() {
         },
       })
     );
-    app.get("*", (_req: Request, res: Response) => {
-      res.sendFile(path.join(distPath, "index.html"));
+
+    app.get("*", (req: Request, res: Response) => {
+      try {
+        const { html: appHtml, helmetTags } = render(req.originalUrl);
+        const responseHtml = template
+          .replace("<!--app-head-->", helmetTags)
+          .replace("<!--app-html-->", appHtml);
+        res.status(200).set({ "Content-Type": "text/html" }).send(responseHtml);
+      } catch (err) {
+        console.error("[SSR Error - prod]", err);
+        // Degrade to the client-rendered shell rather than a hard 500, so
+        // a page-specific bug doesn't take the whole site down.
+        const responseHtml = template
+          .replace("<!--app-head-->", FALLBACK_HEAD)
+          .replace("<!--app-html-->", "");
+        res.status(200).set({ "Content-Type": "text/html" }).send(responseHtml);
+      }
     });
   }
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`[Server] Running on http://0.0.0.0:${PORT}`);
+    console.log(`[Server] Running on http://0.0.0.0:${PORT} (SSR, ${isProd ? "production" : "development"})`);
   });
 }
 
